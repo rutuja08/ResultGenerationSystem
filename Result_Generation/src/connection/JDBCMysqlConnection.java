@@ -10,7 +10,7 @@ public class JDBCMysqlConnection {
 	public static final String DRIVER_CLASS = "com.mysql.jdbc.Driver";
 	public static final String URL_STRING = "jdbc:mysql://localhost:3306/Result_generation";
 	public static final String USER = "root";
-	public static final String PASSWORD = "Creative123#";
+	public static final String PASSWORD = "";
 	
 	private JDBCMysqlConnection()
 	{
