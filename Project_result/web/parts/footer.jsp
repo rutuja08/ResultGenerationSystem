@@ -6,5 +6,5 @@ function hideURLbar(){ window.scrollTo(0,1); }
 </script>
 
 <footer>
-&copy; 2019 Modern College Feedback System. All rights reserved | Design by <a href="profile/codecook_profile.jsp">Code Cook Club</a>
+&copy; 2019 Modern College Result Generation System. All rights reserved | Design by <a href="#">MCA Department</a>
 </footer>

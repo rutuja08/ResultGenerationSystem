@@ -18,19 +18,19 @@ boolean status=false;
 
 String first_name, prefix, last_name;
 
-String sql = "select prefix,first_name,last_name from CollegeFeedBack.Admin where email_id=? and password=?";
+String sql = "select prefix,first_name,last_name from  Result_generation.AdminFacultyUsers where email_id=? and password=?";
     
     try{  
-        Connection con_f=ConnectionProvider.getCon_f();  
+        Connection con_result=ConnectionProvider.getCon();  
               
-        PreparedStatement ps=con_f.prepareStatement(sql);  
+        PreparedStatement ps=con_result.prepareStatement(sql);  
   
         ps.setString(1,request.getParameter("email_id"));  
         ps.setString(2, request.getParameter("password"));  
               
-        ResultSet rs=ps.executeQuery();  
+        ResultSet rs = ps.executeQuery();  
         
-        status=rs.next();
+        status = rs.next();
         prefix = rs.getString(1);
         first_name = rs.getString(2);
         last_name = rs.getString(3);

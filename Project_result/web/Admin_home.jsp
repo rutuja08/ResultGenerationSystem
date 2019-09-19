@@ -21,7 +21,7 @@ out.print("Welcome, "+session.getAttribute("admin_name"));
 
 %></h3>
 <div >
-<label>Select Feedback Option</label>
+<label>Select Option</label>
 
     <div>
     <form method="post">
