@@ -29,7 +29,7 @@ function hideURLbar(){ window.scrollTo(0,1); }
 				<img src="images/profile.jpg" alt="image">
 				<h2>Sign Up Here</h2>
 			</div>	
-			<form action="Student_register.jsp"  method="post">
+			<form action="Student_register.jsp"  method="get">
 				<div>
 					<span><i  aria-hidden="true"></i></span>
 					<input type="text" name="prn" placeholder="PRN"	required="required" />

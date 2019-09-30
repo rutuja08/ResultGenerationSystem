@@ -3,8 +3,8 @@
 
 <head>
     <title>Student Login Form</title>
-    <!-- meta tags -->
-    <meta charset="UTF-8" />
+   
+   
    
 
 </head>

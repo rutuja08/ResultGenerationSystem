@@ -79,9 +79,9 @@
                 ps.setInt(15, course_code);
             
                 ps.executeUpdate();
-              
                 %>
-                 <%@include file="student_home.jsp" %>
+                <h3><% out.print("Welcome "+ first_name+" you have successfuly registerd.");%></h3>
+                 <%@include file="Login_page.jsp" %>
                 <%
                 }
                 catch(Exception e)

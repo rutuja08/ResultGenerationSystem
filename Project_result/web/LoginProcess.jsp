@@ -55,7 +55,7 @@ if(status)
 out.println("You r successfully logged in");  
 session.setAttribute("session","TRUE");  
 %> 
-<jsp:include page="student_home.jsp"></jsp:include>  <%
+<jsp:include page="Student_home.jsp"></jsp:include>  <%
 }  
 else  
 {  
