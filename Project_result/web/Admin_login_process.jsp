@@ -17,6 +17,7 @@
 boolean status=false;  
 
 String first_name, prefix, last_name;
+String user_type = request.getParameter("user_type");
 
 String sql = "select prefix,first_name,last_name from  Result_generation.AdminFacultyUsers where email_id=? and password=?";
     
@@ -53,10 +54,20 @@ String sql = "select prefix,first_name,last_name from  Result_generation.AdminFa
 if(status)
 {  
 out.println("You are successfully logged in..");  
-session.setAttribute("session_admin","TRUE");  
-%> 
-<jsp:forward page="Admin_home.jsp"></jsp:forward>  <%
-}  
+session.setAttribute("user_type",user_type);
+out.print(user_type);
+if(user_type.equals( "admin"))
+{
+    out.print(user_type);
+    response.sendRedirect("Admin_home.jsp");
+
+}
+else if(user_type.equals( "faculty"))
+{
+out.print(user_type);
+response.sendRedirect("Faculty_home.jsp");
+}
+}
 else  
 {  
 out.print("Sorry, email or password error");  

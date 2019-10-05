@@ -9,40 +9,56 @@
 
 <head>
     <title>Admin Login Form</title>
-    <!-- meta tags -->
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    
+    <link rel="stylesheet" href="css/valid.css" type="text/css">
+    <%@include file="parts/header.jsp" %>
 </head>
 
-<body>
-    <h1>Admin Login Form</h1>
-    <div >
-        <h2>Login Here</h2>
+<body class="body">
+    
+
+<div class="form-style">  
+        <h2 align="center">Admin Login Form</h2>
+        
         <form action="Admin_login_process.jsp" method="POST">
 
-            <div>
-                <label>Email ID:</label>
-                <div>
-                    <i></i>
+            <table width="400" align="center">
+                <tr>
+                    <td width="125">User Type:<span class="required">*</span></td>
+                    <td width="180"><input type="radio" name="user_type"  value="admin">Administrator</td>
+                    <td><input type="radio" name="user_type"  value="faculty">Faculty</td>
+                </tr>
+                <tr>
+                    <td width="125">Email Id:<span class="required">*</span></td>
+                    <td width="180"><div class="input-group"><input type="text" name="email_id"  placeholder="Email ID" required="required" /></div></td>
+                </tr>
+                <tr>
+                    <td width="125">Password:<span class="required">*</span></td>
+                    <td width="180"><div class="input-group"><input type="password" name="password" placeholder="Password" required="required" /></div></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><a href="#" class="btn">Back</a>
+                        <button type="submit" class="btn">Login</button>
+                      
+                    </td>
+                </tr>
+            </table>
+          <!--  <label>Select User Type:</label>
+                    <input type="radio" name="user_type"  value="admin" />Administrator
+                    <input type="radio" name="user_type"  value="faculty" />Faculty
+                    <p/><label>Email ID:</label>
                     <input type="text" name="email_id"  placeholder="Email ID" required="required" />
-                </div>
-            </div>
-            <div>
-                <label>Password:</label>
-                <div>
-                    <i></i>
+                <p/><label>Password:</label>
                     <input type="password" name="password" placeholder="Password" required="required" />
-                </div>
-            </div>
-            <div>
-                <a href="#">Forgot Password?</a>
-            </div>
-            <button type="submit">Login</button>
-            <a href="#">BACK</a>
+                
+                <p/><a href="#">Forgot Password?</a>
+                <p/><button type="submit" class="btn">Login</button>
+            <a href="#">BACK</a> -->
         </form>
-        <p>Don't have an account?<a href="#" class="register">New Registration </a></p>
+        <p>Don't have an account?<a href="AdminFacultyRegistrationForm.jsp" class="register">New Registration </a></p>
     </div>
+    <div class="footer">
     <%@include file="parts/footer.jsp" %>
+    </div>
 </body>
 </html>

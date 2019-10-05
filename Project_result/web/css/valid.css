@@ -1,0 +1,65 @@
+@charset "ISO-8859-1";
+.form-style{/*for styling a form*/
+/*this name is called inside html file using class="form-style"*/
+	font-family: 'Open Sans Condensed', arial, sans;
+	width: 1200px;
+	padding: 30px;
+	backgound: lightblue;
+	margin: 50px auto;
+	box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.22);
+}
+.form-style h2{/* this name is called inside html usig <h2> */
+	background: #00a2d1;
+	/*font-family: 'Open Sans Condensed', sans-serif;*/
+	color: #FFFFFF;
+	font-size: 25px;
+	font-weight: 100;
+	padding: 20px;
+	margin: -30px -30px 30px -30px;
+        align: center;
+}
+.input-group{
+	margin: 10px 0px 10px 0px;
+}
+/*For styling an input text field*/
+.input-group input{/* this name is called inside html file using class="input-group" but for styling menu filed*/
+	height: 30px;
+	width: 93%;
+	padding: 5px 10px;
+	border-radius: 5px;
+	border: 1px solid grey;
+}
+/* For styling a menu field*/
+.input-group select{ /* this name is called inside html file using class="input-group" but for styling menu field*/
+	width: 95%;
+	padding: 12px;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	box-sizing: border-box;
+	margin-top: 6px;
+	margin-bottom: 16px;
+	resize: vertical;
+}
+/* For styling a button*/
+.btn{ /* this name is called inside html file using class="btn"*/
+	padding: 10px;
+	font-size: 15px;
+	color: #FFFFFF;
+	background: #00a2d1;
+	border-radius: 5px;
+	border: none;
+}
+.edit{
+	padding: 5px;
+	font-size: 15px;
+	color: #FFFFFF;
+	background: #00a2d1;
+	border-radius: 5px;
+	border: none;
+}
+/* this shows that the field should not be blank */
+.required{
+	color: red;
+	font-size: 20px;
+	font-family: arial;
+}

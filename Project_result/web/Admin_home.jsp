@@ -8,7 +8,8 @@
 <html lang="en">
 <head>
 <title>Admin Home Page</title>
-<jsp:include page="parts/meta.jsp"></jsp:include>
+<link rel="stylesheet" href="css/Style.css">
+<jsp:include page="parts/header.jsp"></jsp:include>
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
 
 </head>
@@ -30,19 +31,19 @@ out.print("Welcome, "+session.getAttribute("admin_name"));
             <button  formaction="Departments.jsp" >DEPARTMENTS</button>
         </div>
         
-        <div class="content-wthree4">	
-            <button formaction="#" >FACULTY</button>
+        <div>	
+            <button formaction="Admin_faculty.jsp" >FACULTY</button>
         </div>
         
-        <div class="content-wthree4">	
+        <div>	
             <button formaction="#" >EXAMINATION</button>
         </div>
         
-        <div class="content-wthree4">	
-            <button formaction="#" >STUDENT</button>
+        <div>	
+            <button formaction="Admin_student.jsp" >STUDENT</button>
         </div>
         
-        <div class="content-wthree4">	
+        <div>	
             <button formaction="#" >SUBJECT</button>
         </div>
         

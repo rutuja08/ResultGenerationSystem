@@ -2,9 +2,9 @@
 <!doctype html>
 <html lang="en">
 <head>
-<title>Student Feedback Home Page</title>
+<title>Student Home Page</title>
 <jsp:include page="parts/meta.jsp"></jsp:include>
-<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+
 
 </head>
 <body>
@@ -19,52 +19,25 @@ out.print("Welcome, "+session.getAttribute("first_name"));
 		<form method="post">
 				<div >	
 				<div >
-					<div><input type="submit" class="register" formaction="select_term.jsp" value="SUBJECT TEACHER"></div>
+					<div><input type="submit" class="register" formaction="stud_internal_report.jsp" value="INTERNAL REPORT"></div>
 					<div class="clear"></div>
 				</div>
 			</div>
 			
 			<div class="content-wthree4">	
 				<div class="form-control">
-					<input type="submit" class="register" value="DEPARTMENT">
+                                    <input type="submit" class="register"  formaction="stud_external_report.jsp" value="EXTERNAL REPORT">
 					<div class="clear"></div>
 				</div>
 			</div>
 			
 			<div class="content-wthree4">	
 				<div class="form-control">
-					<input type="submit" class="register" value="SUB DEPARTMENT">
+                                    <input type="submit" class="register" formaction="stud_overall_report.jsp" value="OVERALL REPORT">
 					<div class="clear"></div>
 				</div>
 			</div>		
 			
-			<div class="content-wthree4">	
-				<div class="form-control">
-					<input type="submit" class="register" value="GUEST LECTURES">
-					<div class="clear"></div>
-				</div>
-			</div>		
-			
-			<div class="content-wthree4">	
-				<div class="form-control">
-					<input type="submit" class="register" value="SEMINAR">
-					<div class="clear"></div>
-				</div>
-			</div>				
-			
-			<div class="content-wthree4">	
-				<div class="form-control">
-					<input type="submit" class="register" value="EVENTS">
-					<div class="clear"></div>
-				</div>
-			</div>		
-			
-			<div class="content-wthree4">	
-				<div class="form-control">
-					<input type="submit" class="register" value="AMENITIES">
-					<div class="clear"></div>
-				</div>
-			</div>		
 		</form>
 	</div>
 </div>
