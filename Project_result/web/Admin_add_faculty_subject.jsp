@@ -22,11 +22,11 @@
             
             <table width="400" align="center" >
                 <tr>
-                    <td  width="125"><label>Subject Type:</label></td>
+                    <td><label>Subject Type:</label><span class="required">*</span></td>
                     
-                    <td width="125"><input type="radio" name="subject_type" value="theory">THEORY
+                    <td><input type="radio" name="subject_type" value="theory" checked="">THEORY<br>
                         <input type="radio" name="subject_type" value="practical">PRACTICAL<br>
-            <input type="radio" name="subject_type" value="other">MINI, MAJOR PROJECT or SEMINAR
+                        <input type="radio" name="subject_type" value="other">MINI, MAJOR PROJECT or SEMINAR
                     </td>
                 </tr>
             <p/>
@@ -41,8 +41,8 @@
             ResultSet rs= stmt.executeQuery("SELECT * FROM `Course`");
 
             %>
-            <td width="125"><label>Course: </label></td>
-            <td width="125"><select name="course_code" class="select">
+            <td><label>Course: </label></td>
+            <td><select name="course_code" class="select">
                 <% 
                 while(rs.next())
                 {
@@ -72,8 +72,8 @@
                 ResultSet rs= stmt.executeQuery("SELECT * FROM `Academic_year`");
                                     
             %>
-            <td width="125"><label>Academic Year: </label></td>
-            <td width="125"><select name="academic_year" >
+            <td><label>Academic Year: </label></td>
+            <td><select name="academic_year" >
             <% 
             while(rs.next())
             {
@@ -94,8 +94,8 @@
             </tr>
             <p/>
             <tr>
-                <td width="125"><a href="#" class="btn">Back</a></td>
-                <td width="125"><button type="submit" class="btn">Submit</button></td>
+                <td><a href="#" class="btn">Back</a></td>
+                <td><button type="submit" class="btn">Submit</button></td>
             </tr>
             </table>
         </form>
