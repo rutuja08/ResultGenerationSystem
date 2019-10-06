@@ -3,15 +3,12 @@
     Created on : 15 Jun, 2019, 1:01:58 PM
     Author     : rutu
 --%>
-
+<jsp:include page="header.jsp" >
+<jsp:param name="discription" value="Shivajinagar, Pune 5." />
+</jsp:include>
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <title>Admin Login Form</title>
-    <link rel="stylesheet" href="css/valid.css" type="text/css">
-    <%@include file="parts/header.jsp" %>
-</head>
 
 <body class="body">
     
@@ -39,8 +36,12 @@
                     <td></td>
                     <td><a href="#" class="btn">Back</a>
                         <button type="submit" class="btn">Login</button>
-                      
+                        <button type="reset" class="btn">Reset</button>
                     </td>
+                </tr>
+                <tr>
+                    <td width="125">Don't have an account?</td>
+                    <td width="125"><a href="AdminFacultyRegistrationForm.jsp" class="register">New Registration </a></td>
                 </tr>
             </table>
           <!--  <label>Select User Type:</label>
@@ -55,7 +56,6 @@
                 <p/><button type="submit" class="btn">Login</button>
             <a href="#">BACK</a> -->
         </form>
-        <p>Don't have an account?<a href="AdminFacultyRegistrationForm.jsp" class="register">New Registration </a></p>
     </div>
     <div class="footer">
     <%@include file="parts/footer.jsp" %>
