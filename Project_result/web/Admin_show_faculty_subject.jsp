@@ -1,8 +1,9 @@
 <%-- 
-    Document   : Admin_add_faculty_subject_specific
-    Created on : 3 Oct, 2019, 11:29:03 PM
+    Document   : Admin_show_faculty_subject
+    Created on : 6 Oct, 2019, 4:55:56 PM
     Author     : rutu
 --%>
+
 <jsp:include page="header.jsp" >
 <jsp:param name="discription" value="Shivajinagar, Pune 5." />
 </jsp:include>
@@ -13,13 +14,13 @@
     <head>
         <link rel="stylesheet" href="css/valid.css" type="text/css">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Add faculty subject</title>
+        <title>Faculty subject pair</title>
         
     </head>
     <body  class="body">
         <div class="form-style">  
-        <h2 align="center">Add Faculty Subject</h2>
-        <form method="GET" action="Admin_add_faculty_subject_specific_add.jsp">
+        <h2 align="center">Faculty Subject Pair</h2>
+        <form>
             <table width="400" align="center" >
            
                 <tr>
@@ -198,8 +199,7 @@
                         
                         <tr>
                             <td width="125"><a href="Admin_add_faculty_subject.jsp" class="btn">Back</a></td>
-                            <td width="125"><button type="submit" class="btn">Add Pair</button></td>
-                            <td width="125"><button type="submit" class="btn" formaction="Admin_show_faculty_subject.jsp">Show Pairs</button></td>
+                            
                         </tr>
                         
             </table>

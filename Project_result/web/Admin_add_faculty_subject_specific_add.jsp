@@ -18,7 +18,7 @@
     <body>
 <%
   Class.forName(Connect.DRIVER);
-            Connection con = DriverManager.getConnection(Connect.URLR, Connect.USER, Connect.PASS);
+  Connection con = DriverManager.getConnection(Connect.URLR, Connect.USER, Connect.PASS);
   PreparedStatement ps=null;
   String faculty_sub_id;
   
@@ -64,4 +64,5 @@
   }
 %>
 </body>
+
 </html>
