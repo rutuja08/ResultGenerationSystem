@@ -6,17 +6,17 @@
 	padding: 30px;
 	backgound: lightblue;
 	margin: 50px auto;
+        color: black;
 	box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.22);
 }
-.form-style h2{/* this name is called inside html usig <h2> */
-	background: #00a2d1;
+.form-style h2{/* this name is called inside html using <h2> */
+	background: crimson;
 	/*font-family: 'Open Sans Condensed', sans-serif;*/
 	color: #FFFFFF;
 	font-size: 25px;
 	font-weight: 100;
 	padding: 20px;
 	margin: -30px -30px 30px -30px;
-        align: center;
 }
 .input-group{
 	margin: 10px 0px 10px 0px;
@@ -42,10 +42,11 @@
 }
 /* For styling a button*/
 .btn{ /* this name is called inside html file using class="btn"*/
-	padding: 10px;
-	font-size: 15px;
+        font-family: 'Open Sans Condensed', arial, sans;
+        padding: 10px;
+        font-size: 15px;
 	color: #FFFFFF;
-	background: #00a2d1;
+	background: crimson;
 	border-radius: 5px;
 	border: none;
 }
@@ -53,7 +54,7 @@
 	padding: 5px;
 	font-size: 15px;
 	color: #FFFFFF;
-	background: #00a2d1;
+	background: crimson;
 	border-radius: 5px;
 	border: none;
 }
