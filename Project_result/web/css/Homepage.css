@@ -1,0 +1,30 @@
+@CHARSET "ISO-8859-1";
+body {
+  font-family: Arial;
+  margin: 0;
+}
+
+/* Header/Logo Title */
+.header {
+  padding: 10px;
+  text-align: center;
+  background: #bf3048;
+  color: white;
+  min-height: 240px !important;
+}
+
+.header img {
+  float: left;
+  width: 200px;
+  height: 200px;
+  background: #555;
+}
+
+/* Page Content */
+.content {padding:0px;
+ background: #fcdee3;
+ }
+
+.content .image img {
+  border-radius: 50%;
+}
