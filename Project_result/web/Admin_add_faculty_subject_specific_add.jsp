@@ -26,7 +26,7 @@
   String academic_year = request.getParameter("academic_year");
   String subject_code = request.getParameter("subject_code");
   
-  faculty_sub_id = ""+faculty_id+subject_code;
+  faculty_sub_id = academic_year+faculty_id+subject_code;
   out.print(faculty_id);
   out.print(academic_year);
   out.print(subject_code);
