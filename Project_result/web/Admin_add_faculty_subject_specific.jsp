@@ -6,6 +6,7 @@
 <jsp:include page="header.jsp" >
 <jsp:param name="discription" value="Shivajinagar, Pune 5." />
 </jsp:include>
+<%@include file="Connection.jsp" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -13,21 +14,68 @@
         <link rel="stylesheet" href="css/valid.css" type="text/css">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Add faculty subject</title>
-        <%@include file="Connection.jsp" %>
+        
     </head>
     <body  class="body">
         <div class="form-style">  
         <h2 align="center">Add Faculty Subject</h2>
-        <form>
+        <form method="GET" action="Admin_add_faculty_subject_specific_add.jsp">
             <table width="400" align="center" >
+           
+                <tr>
+            
             <%
-                String course_name;
+                Class.forName(Connect.DRIVER);
+                Connection con1 = DriverManager.getConnection(Connect.URLR, Connect.USER, Connect.PASS);
+                Statement stmt,stmt1;
+                ResultSet rs,rs1;
+                String name;
+                
                 String subject_type = request.getParameter("subject_type");
                 Integer course_code = Integer.parseInt(request.getParameter("course_code"));
-                String academic_year = request.getParameter("academic_year");
+                
+                
+                String theory_sql=null, practical_sql=null, other_sql=null, course_sql=null;
+                
+            try
+            {
+                
+                stmt = con1.createStatement();
+                rs= stmt.executeQuery("SELECT * FROM `Academic_year`");
+                                    
+            %>
+            <td><label>Academic Year: </label></td>
+            <td><select name="academic_year" >
+            <% 
+            
+            while(rs.next())
+            {
+            %>
+            <option value="<%=rs.getString(1)%>"><%=rs.getString(1)%></option>
+           
+            <% 
+            }
+            rs.close();
+            stmt.close();
+            
+   
+            %>
+            </select>
+            </td>
+            <%
+            }
+            catch(Exception e)
+            {
+                System.out.print(e);
+            }
+            %>
+            </tr>
+            
+                <%
                 session.setAttribute("subject_type_faculty_subject", subject_type);
                 //out.println(request.getParameter("subject_type"));
-                String theory_sql=null, practical_sql=null, other_sql=null, course_sql=null;
+                
+                
                 
                 course_sql = "SELECT `course_name` FROM `Course` WHERE course_code="+course_code;
                 if(subject_type.equals("theory"))
@@ -45,12 +93,10 @@
             
                 try
                 {
-                    Class.forName(Connect.DRIVER);
-                    Connection con= DriverManager.getConnection(Connect.URLR, Connect.USER, Connect.PASS);
-                    Statement stmt,stmt1;
-                    stmt= con.createStatement();
-                    stmt1= con.createStatement();
-                    ResultSet rs,rs1;
+                    
+                    stmt= con1.createStatement();
+                    stmt1= con1.createStatement();
+                    
                     
                     rs1 = stmt1.executeQuery(course_sql);
                     if(subject_type.equals("theory"))
@@ -79,32 +125,30 @@
                             <% 
                             }
                             rs1.close();
+                            stmt1.close();
                             %>
                             
                         </tr>
-                        <p/>
-                        <tr>
-                            <td><label>Academic Year:</label></td>
-                            <td><%=academic_year %></td>
-                            
-                        </tr>
-                        <p/>
+                        
+                        
+                        
                         <tr>
                             
                             <td><label>Subject: </label></td>
-                            <td><select name="subject_code">
+                            <td><select name="subject_code" >
                             <% 
                             while(rs.next())
                             {
                             %>
-                            <option value="<%=rs.getInt(1)%>"><%=rs.getString(2)%></option>
+                            <option value="<%=rs.getString(1)%>"><%=rs.getString(2)%></option>
                             <% 
                             }
+                            rs.close();
+                            stmt.close();
                             %>
                                 </select>
                             </td>
-                        </tr>
-                        <p/>
+                        
                         <%
                             }
                             catch(Exception e)
@@ -112,35 +156,33 @@
                                 System.out.print(e);
                             }
                         %>
-                        <tr>
-                            <td> </td>
-                            <td> </td>
                         </tr>
-                        <%
                         
+                        <tr>
+                            <td ><label>Faculty : </label></td>
+                        <%
                             try
                             {
-                                Class.forName(Connect.DRIVER);
-                                Connection con = DriverManager.getConnection(Connect.URLR, Connect.USER, Connect.PASS);
-                                Statement stmt = con.createStatement();
-                                String name;
-                                ResultSet rs2= stmt.executeQuery("SELECT `ID`, `prefix`, `first_name`, `middle_name`, `last_name` FROM `AdminFacultyUsers` WHERE course_code = "+course_code);
+                                
+                                stmt = con1.createStatement();
+                                
+                                rs= stmt.executeQuery("SELECT `ID`, `prefix`, `first_name`, `middle_name`, `last_name` FROM `AdminFacultyUsers` WHERE course_code = "+course_code);
 
                             %>
-                            <tr>
-                                <td><label>Faculty: </label></td>
-                                <td><select name="faculty_code" >
-                                <% 
-                                while(rs2.next())
-                                {
-                                    name = rs2.getString(2)+" "+rs2.getString(3)+" "+rs2.getString(4)+" "+rs2.getString(5);
-                                %>
-                                <option value="<%=rs2.getString(1)%>"><%=name%></option>
-                                <% 
-                                }
-                                rs2.close();
-                                %>
-                                </select>
+                            
+                            <td ><select name="faculty_id" >
+                            <% 
+                            while(rs.next())
+                            {
+                                name = rs.getString(2)+" "+rs.getString(3)+" "+rs.getString(4)+" "+rs.getString(5);
+                            %>
+                            <option value="<%=rs.getString(1)%>"><%=name%></option>
+                            <% 
+                            }
+                            rs.close();
+                            stmt.close();
+                            %>
+                            </select>
                             </td>
                             <%
                             }
@@ -151,9 +193,12 @@
                             %>
                             </tr>
 
+
+                        
+                        
                         <tr>
-                            <td><a href="Admin_add_faculty_subject.jsp" class="btn">Back</a></td>
-                            <td><button type="submit" class="btn">Add Pair</button></td>
+                            <td width="125"><a href="Admin_add_faculty_subject.jsp" class="btn">Back</a></td>
+                            <td width="125"><button type="submit" class="btn">Add Pair</button></td>
                         </tr>
                         
             </table>

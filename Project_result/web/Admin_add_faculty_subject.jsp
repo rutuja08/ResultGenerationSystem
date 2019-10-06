@@ -24,7 +24,7 @@
                 <tr>
                     <td><label>Subject Type:</label><span class="required">*</span></td>
                     
-                    <td><input type="radio" name="subject_type" value="theory" checked="">THEORY<br>
+                    <td><input type="radio" name="subject_type" value="theory" >THEORY<br>
                         <input type="radio" name="subject_type" value="practical">PRACTICAL<br>
                         <input type="radio" name="subject_type" value="other">MINI, MAJOR PROJECT or SEMINAR
                     </td>
@@ -49,7 +49,9 @@
                 %>
                 <option value="<%=rs.getInt(1)%>"><%=rs.getString(2)%></option>
                 <% 
-                }
+                }rs.close();
+                stmt.close();
+                
                 %>
                 </select></td>
             <%
@@ -61,44 +63,16 @@
             %>
             </tr>
             <p/>
-            <tr>
-            
-            <%
-            try
-            {
-                Class.forName(Connect.DRIVER);
-                Connection con = DriverManager.getConnection(Connect.URLR, Connect.USER, Connect.PASS);
-                Statement stmt = con.createStatement();
-                ResultSet rs= stmt.executeQuery("SELECT * FROM `Academic_year`");
-                                    
-            %>
-            <td><label>Academic Year: </label></td>
-            <td><select name="academic_year" >
-            <% 
-            while(rs.next())
-            {
-            %>
-            <option value="<%=rs.getString(1)%>"><%=rs.getString(1)%></option>
-            <% 
-            }
-            %>
-            </select>
-            </td>
-            <%
-            }
-            catch(Exception e)
-            {
-                System.out.print(e);
-            }
-            %>
-            </tr>
             <p/>
             <tr>
-                <td><a href="#" class="btn">Back</a></td>
+                <td><a href="Admin_faculty.jsp" class="btn">Back</a></td>
                 <td><button type="submit" class="btn">Submit</button></td>
             </tr>
             </table>
         </form>
         </div>
     </body>
+    <div class="footer">
+    <%@include file="parts/footer.jsp" %>
+    </div>
 </html>
