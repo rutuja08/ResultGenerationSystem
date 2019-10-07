@@ -2,6 +2,8 @@
     Document   : Welcome_page
     Created on : 6 Oct, 2019, 12:37:27 PM
     Author     : Mukta
+    This is the very first page of this whole system
+    It gives three options for three diffrent type of user login.
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -25,13 +27,13 @@
   <p><img src="images/clg.jpg" style="width:1264px;height:400px"/><p>
   	<center>
 		<div class="image">
-			<a href="">
+			<a href="Admin_login.jsp">
 				<img src="images/admin.jpg" alt="Admin" title="Admin" style="width:200px;margin-right:100px;"/>
 			</a>
-			<a href="">
+			<a href="Admin_login.jsp">
 				<img src="images/faculty.jpg" alt="Faculty" title="Faculty" style="width:200px;margin-right:100px;"/>
 			</a>
-			<a href="">
+			<a href="Login_page.jsp">
 				<img src="images/student.jpg" alt="Student" title="Student" style="width:200px;margin-right:100px;"/></div>
 			</a>
 	</center>
