@@ -18,62 +18,71 @@
     </head>
     <body  class="body">
         <div class="form-style">  
-        <h2 align="center">Select Type For Faculty Subject</h2>
-        <form action="Admin_add_faculty_subject_specific.jsp" method="GET">
-            
+        <h2 align="center">Select Type For Internal Marks</h2>
+        <form action="#" method="GET">
+            <%
+                out.print(""+session.getAttribute("admin_name"));
+                Class.forName(Connect.DRIVER);
+                Connection con = DriverManager.getConnection(Connect.URLR, Connect.USER, Connect.PASS);
+                Statement stmt;
+                ResultSet rs;
+                String course_name=null;
+                String course_sql = "SELECT `course_name` FROM `Course` WHERE course_code="+session.getAttribute("faculty_course_code");
+                
+                
+            %>
             <table width="400" align="center" >
-                <tr>
+               <tr>
                     <td><label>Subject Type:</label><span class="required">*</span></td>
                     
-                    <td><input type="radio" name="subject_type" value="theory" >THEORY<br>
+                    <td><input type="radio" name="subject_type" value="theory" checked="">THEORY<br>
                         <input type="radio" name="subject_type" value="practical">PRACTICAL<br>
                         <input type="radio" name="subject_type" value="other">MINI, MAJOR PROJECT or SEMINAR
                     </td>
                 </tr>
-            <p/>
-            <tr>
-            
-            <%
-            try
-            {
-            Class.forName(Connect.DRIVER);
-            Connection con = DriverManager.getConnection(Connect.URLR, Connect.USER, Connect.PASS);
-            Statement stmt = con.createStatement();
-            ResultSet rs= stmt.executeQuery("SELECT * FROM `Course`");
+                <tr>
+                    <td>
+                        <label>Course Name</label>
+                    </td>
+                    
+                        <% 
+                            try
+                            {
+                                stmt = con.createStatement();
+                                rs = stmt.executeQuery(course_sql);
+                                %>
+                        <% 
+                            while(rs.next())
+                            {
+                                course_name =rs.getString(1); 
+                            %>
+                            <td><label><%=course_name%></label></td>
+                            <% 
+                            }
+                            rs.close();
+                            stmt.close();
+                            %>
+                            
+                        </tr>
+                        <%
 
-            %>
-            <td><label>Course: </label></td>
-            <td><select name="course_code" class="select">
-                <% 
-                while(rs.next())
-                {
-                %>
-                <option value="<%=rs.getInt(1)%>"><%=rs.getString(2)%></option>
-                <% 
-                }rs.close();
-                stmt.close();
-                
-                %>
-                </select></td>
-            <%
-                }
-                catch(Exception e)
-                {
-                    System.out.print(e);
-                }
-            %>
-            </tr>
-            <p/>
-            <p/>
-            <tr>
-                <td><a href="Admin_faculty.jsp" class="btn">Back</a></td>
-                <td><button type="submit" class="btn">Submit</button></td>
-            </tr>
+                            }
+                            catch(Exception e)
+                            {
+                                System.out.print(e);
+                            }
+                        %>
+                    <p/>
+          
+                        <tr>
+                            <td><a href="Faculty_home.jsp" class="btn">Back</a></td>
+                            <td><button type="submit" class="btn">Submit</button></td>
+                            
+                        </tr>
             </table>
+                    <input type='hidden' name='course_name' value='<%=course_name%>'>
         </form>
         </div>
     </body>
-    <div class="footer">
-    <%@include file="parts/footer.jsp" %>
-    </div>
+    
 </html>

@@ -20,6 +20,8 @@
         <div class="form-style">  
         <h2 align="center">Add Faculty Subject</h2>
         <form method="GET" action="Admin_add_faculty_subject_specific_add.jsp">
+            
+            
             <table width="400" align="center" >
            
                 <tr>
@@ -46,6 +48,7 @@
                 rs= stmt.executeQuery("SELECT * FROM `Academic_year`");
                                     
             %>
+            
             <td><label>Academic Year: </label></td>
             <td><select name="academic_year" >
             <% 
@@ -206,6 +209,7 @@
                         </tr>
                         
             </table>
+                       <input type="hidden" name="course_code" value="<%=course_code%>">
         </form>
         </div>
     </body>

@@ -3,7 +3,9 @@
     Created on : 6 Oct, 2019, 12:18:47 PM
     Author     : rutu
 --%>
-
+<jsp:include page="header.jsp" >
+<jsp:param name="discription" value="Shivajinagar, Pune 5." />
+</jsp:include>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@include file="Connection.jsp" %>
  
@@ -20,6 +22,8 @@
   Class.forName(Connect.DRIVER);
   Connection con = DriverManager.getConnection(Connect.URLR, Connect.USER, Connect.PASS);
   PreparedStatement ps=null;
+  ResultSet rs;
+  Statement stmt = con.createStatement();
   String faculty_sub_id;
   
   int faculty_id = Integer.parseInt(request.getParameter("faculty_id"));
@@ -32,6 +36,20 @@
   out.print(subject_code);
   try
   {
+      rs = stmt.executeQuery("SELECT `faculty_sub_id` FROM `FacultySubject` WHERE  `academic_year`= '"+ academic_year+"' and "
+              + "`faculty_id`= "+faculty_id+" and `subject_code`="+subject_code);
+      if(rs!=null)
+      {
+          %>
+        <script type="text/javascript">
+            alert("Duplicate record.");
+        </script>
+        <a href="Admin_add_faculty_subject.jsp" class="btn">Back</a>
+        <%
+          //  response.sendRedirect("Admin_add_faculty_subject.jsp");
+      }
+else{
+      
     int res;
       String sql="INSERT INTO `FacultySubject`(`faculty_sub_id`, `academic_year`, `faculty_id`, `subject_code`) "
             + "VALUES (?,?,?,?)";
@@ -40,19 +58,26 @@
     ps.setString(2, academic_year);
     ps.setInt(3, faculty_id);
     ps.setString(4, subject_code);
-    
+    out.println(ps);
     res = ps.executeUpdate();
+    out.println(ps.executeUpdate());
     
-    if(res == 0)
-    {
-         out.print("Pair already added.");
-            response.sendRedirect("Admin_add_faculty_subject.jsp");
+    %> 
+        <script type="text/javascript">
+            alert("Record Added.");
+        </script>
+        <a href="Admin_add_faculty_subject.jsp" class="btn">Back</a>
+        
+    <%
+    //response.sendRedirect("Admin_add_faculty_subject.jsp");
     }
+    
     %>
+    <input type="hidden" name="academic_year" value="<%=request.getParameter("academic_year")%>">
+    
+        <a href='Admin_show_faculty_subject.jsp?course_code=<%=request.getParameter("course_code") %>&academic_year=<%=academic_year %>' class="btn">Show Data</a>
     <h3>
-        <% out.print("You have successfuly added pair.");
-            response.sendRedirect("Admin_add_faculty_subject.jsp");
-        %></h3>
+        </h3>
         
         <%
   }

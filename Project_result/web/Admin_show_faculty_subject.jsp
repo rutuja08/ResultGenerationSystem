@@ -18,7 +18,7 @@
         
     </head>
     <body  class="body">
-        <div class="form-style">  
+        <div class="form-style" align="center">  
         <h2 align="center">Faculty Subject Pair</h2>
         <form>
             <table width="400" align="center" border="1">
@@ -39,15 +39,17 @@
                 ResultSet rs,rs1;
                 String name;
                 String theory_sql = null, practical_sql = null, other_sql = null;
-                int course_code = (int)session.getAttribute("course_code");
+                int course_code = Integer.parseInt(request.getParameter("course_code"));
                 
                 String academic_year = request.getParameter("academic_year");
                 String subject_type = (String)session.getAttribute("subject_type");
                 
-                out.print(course_code);
-                out.print(academic_year);
-                out.print(subject_type);
-                
+                //out.print(course_code);
+                //out.print(academic_year);
+                //out.print(subject_type);
+                stmt = con.createStatement();
+            try
+            {    
                 if(subject_type.equals("theory"))
                 {
                     theory_sql = "SELECT DISTINCT `AdminFacultyUsers`.`prefix`,`AdminFacultyUsers`."
@@ -55,8 +57,22 @@
                         + ", `TheorySubject`.`theory_sub_name`FROM `AdminFacultyUsers`, `FacultySubject`,"
                         + "`TheorySubject` WHERE `AdminFacultyUsers`.`course_code`="+course_code+" and "
                         + "`FacultySubject`.`subject_code` = `TheorySubject`.`theory_sub_code` "
-                        + "and `FacultySubject`.`academic_year`= "+academic_year;
+                        + "and `FacultySubject`.`academic_year`= '"+academic_year+"'";
                     
+                    
+                     rs= stmt.executeQuery(theory_sql);
+                     while(rs.next())
+                        {
+                            name = ""+rs.getString(1)+" "+rs.getString(2)+" "+rs.getString(3)+" "+rs.getString(4);
+                            %>
+                            <tr>
+                                <td><%=name%></td>
+                                <td><%=rs.getString(5)%></td>
+                            </tr>
+                            <%
+
+                        }
+            
                 }
                 else if(subject_type.equals("practical"))
                 {
@@ -65,7 +81,18 @@
                             + " `PracticalSubject`.`practical_sub_name` FROM `AdminFacultyUsers`, `FacultySubject`"
                             + ",`PracticalSubject` WHERE `AdminFacultyUsers`.`course_code`="+course_code+" and "
                             + "`FacultySubject`.`subject_code` = `PracticalSubject`.`practical_sub_code` "
-                            + "and `FacultySubject`.`academic_year`="+academic_year;
+                            + "and `FacultySubject`.`academic_year`= '"+academic_year+"'";
+                    rs= stmt.executeQuery(practical_sql);
+                    while(rs.next())
+                    {
+                        name = ""+rs.getString(1)+rs.getString(2)+rs.getString(3)+rs.getString(4);
+                        %>
+                        <tr>
+                            <td><%=name%>+</td>
+                            <td><%=rs.getString(5)%>+</td>
+                        </tr>
+                        <%
+                    }
                 }
                 else
                 {
@@ -74,42 +101,23 @@
                             + " `OtherSubject`.`other_sub_name` FROM `AdminFacultyUsers`, `FacultySubject`,"
                             + " `OtherSubject`WHERE `AdminFacultyUsers`.`course_code`="+course_code+" and "
                             + "`FacultySubject`.`subject_code` =`OtherSubject`.`other_sub_code`and"
-                            + " `FacultySubject`.`academic_year`="+academic_year;
-                }
-                
-            try
-            {
-                
-                stmt = con.createStatement();
-                rs = null;
-                if(subject_type.equals("theory"))
-                {
-                    rs= stmt.executeQuery(theory_sql);
-                    
-                }
-                else if(subject_type.equals("practical"))
-                {
-                    rs= stmt.executeQuery(practical_sql);
-                }
-                else
-                {
+                            + " `FacultySubject`.`academic_year`= '"+academic_year+"'";
                     rs= stmt.executeQuery(other_sql);
+                    while(rs.next())
+                    {
+                        name = ""+rs.getString(1)+rs.getString(2)+rs.getString(3)+rs.getString(4);
+                        %>
+                        <tr>
+                            <td><%=name%>+</td>
+                            <td><%=rs.getString(5)%>+</td>
+                        </tr>
+                        <%
+                    }
                 }
-            
-            while(rs.next())
-            {
-                out.print("hello");
-            name = ""+rs.getString(1)+rs.getString(2)+rs.getString(3)+rs.getString(4);
-            out.print(name);
-                %>
-                <tr>
-                    <td><%=rs.getString(2)%>+</td>
-                    <td><%=rs.getString(5)%>+</td>
-                </tr>
                 
-                <%
             
-            }
+                
+             
             rs.close();
             stmt.close();
    
@@ -119,12 +127,9 @@
                 System.out.print(e);
             }
             %>
-                <tr>
-                            <td width="125"><a href="Admin_add_faculty_subject.jsp" class="btn">Back</a></td>
-                            
-                        </tr>
                         
-            </table>
+            </table><p/>
+            <a href="Admin_add_faculty_subject.jsp" class="btn">Back</a>
         </form>
         </div>
     </body>
