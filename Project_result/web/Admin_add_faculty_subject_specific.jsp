@@ -33,6 +33,8 @@
                 
                 String subject_type = request.getParameter("subject_type");
                 Integer course_code = Integer.parseInt(request.getParameter("course_code"));
+                session.setAttribute("course_code", course_code);
+                session.setAttribute("subject_type", subject_type);
                 
                 
                 String theory_sql=null, practical_sql=null, other_sql=null, course_sql=null;
@@ -78,6 +80,7 @@
                 
                 
                 course_sql = "SELECT `course_name` FROM `Course` WHERE course_code="+course_code;
+                
                 if(subject_type.equals("theory"))
                 {
                     theory_sql = "SELECT `theory_sub_code`, `theory_sub_name` FROM `TheorySubject` WHERE course_code = "+course_code;
