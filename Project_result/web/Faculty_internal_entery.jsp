@@ -81,6 +81,7 @@
                         </tr>
             </table>
                     <input type='hidden' name='course_name' value='<%=course_name%>'>
+                    
         </form>
         </div>
     </body>
