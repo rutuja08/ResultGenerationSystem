@@ -50,7 +50,7 @@
     }
     catch(Exception e)
     {
-        out.println(e);
+        //out.println(e);
     }
     }
     
@@ -77,7 +77,11 @@
                     </td>
                 </tr>            
             </table>
-        </div>
+        
     </form>
+    </div>
+    <div class="footer">
+    <%@include file="parts/footer.jsp" %>
+    </div>
     </body>
 </html>

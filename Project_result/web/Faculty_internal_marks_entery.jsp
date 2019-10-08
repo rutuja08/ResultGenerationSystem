@@ -20,7 +20,7 @@
     <body  class="body">
         <div class="form-style">  
         <h2 align="center">Internal Marks</h2>
-        <form method="GET" action="#">
+        <form method="GET" action="Faculty_internal_marks_entery_specific.jsp">
             <%
                 
                 out.print(""+session.getAttribute("admin_name"));
@@ -153,12 +153,17 @@
                             <td width="125"><button type="submit" class="btn">Submit</button></td>
                         </tr>
             </table>
-                <input type="hidden" name="course_code" value="<%=course_code%>">
+                    <input type="hidden" name="ass_name" value="<%=ass_name%>">
+                    <input type="hidden" name="ass_max_mks" value="<%=ass_max_mks%>">
+                    <input type="hidden" name="ass_no" value="<%=ass_no%>">
+                    <input type="hidden" name="course_code" value="<%=course_code%>">
+                    <input type="hidden" name="present_year" value="<%=present_year%>">
                     <input type="hidden" name="subject_type" value="<%=subject_type%>">
                     <input type="hidden" name="course_name" value="<%=course_name%>">
                     <input type="hidden" name="faculty_id" value="<%=faculty_id%>">
-                    <input type="hidden" name="ass_name" value="<%=ass_name%>">
-                    <input type="hidden" name="ass_max_mks" value="<%=ass_max_mks%>">
+                    <input type="hidden" name="subject_name" value="<%=subject_name%>">
+                    <input type="hidden" name="subject_code" value="<%=subject_code%>">
+                    <input type="hidden" name="shift" value="<%=shift%>">
                        
         </form>
         </div>

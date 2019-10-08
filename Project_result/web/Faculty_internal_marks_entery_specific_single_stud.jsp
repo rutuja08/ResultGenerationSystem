@@ -1,6 +1,6 @@
 <%-- 
-    Document   : Faculty_internal_marks_entery_specific
-    Created on : 8 Oct, 2019, 4:52:04 PM
+    Document   : Faculty_internal_marks_entery_specific_single_stud
+    Created on : 8 Oct, 2019, 6:23:34 PM
     Author     : rutu
 --%>
 
@@ -19,8 +19,8 @@
     </head>
     <body  class="body">
         <div class="form-style">  
-        <h2 align="center">Enter Internal Marks</h2>
-        <form method="GET" action="Faculty_internal_marks_entery_specific_single_stud.jsp">
+        <h2 align="center">Internal Marks</h2>
+        <form method="GET" action="#">
             <%
                 
                 out.print(""+session.getAttribute("admin_name"));
@@ -28,6 +28,7 @@
                 Connection con1 = DriverManager.getConnection(Connect.URLR, Connect.USER, Connect.PASS);
                 Statement stmt=null, stmt1=null;
                 ResultSet rs=null, rs1= null;
+                PreparedStatement ps,ps1;
                 
                 long prn = Long.parseLong(request.getParameter("prn"));
                 String subject_type = request.getParameter("subject_type");
@@ -41,11 +42,41 @@
                 int shift = Integer.parseInt(request.getParameter("shift"));
                 String ass_no = request.getParameter("ass_no");
                 String ass_name= request.getParameter("ass_name");
+                int no_of_attempt= Integer.parseInt(request.getParameter("attempt_no"));
+                int marks = Integer.parseInt(request.getParameter("marks"));
+                int student_sub_no=0;
                 int ass_max_mks=Integer.parseInt(request.getParameter("ass_max_mks"));
-                String stud_name=null;
-                String student_sql="SELECT `first_name`, `middle_name`, `last_name` FROM"
-                        + " `Student` WHERE `prn`="+prn;
+                String stud_name;
+                String student_sql1="INSERT INTO `StudentSubject`(`stud_sub_no`, `prn`, `subject_code`) VALUES (?,?,?)";
+                String select_stud_sub = "SELECT `stud_sub_no` FROM `StudentSubject` WHERE `prn` ="+prn+" and `subject_code`="+subject_code;
                 
+                String insert_mks = "INSERT INTO `InternalMarks`(`int_mks_id`, `stud_sub_no`, `no_of_attempt`, `assessment_tool_no`,"
+                        + " `obtained_mks`, `obtained_credit_points`) VALUES (?,?,?,?,?,?)";
+                
+                ps = con1.prepareStatement(student_sql1);
+                ps.setString(1, null);
+                ps.setLong(2, prn);
+                ps.setString(3, subject_code);
+                ps.executeUpdate();
+                
+                stmt = con1.createStatement();
+                    rs = stmt.executeQuery(select_stud_sub);
+                    while(rs.next())
+                    {
+                        student_sub_no = rs.getInt(1);
+                    }
+                    out.print(student_sub_no);
+                ps1 = con1.prepareStatement(insert_mks);
+                ps1.setString(1, null);
+                ps1.setInt(2, student_sub_no);
+                ps1.setInt(3, no_of_attempt);
+                ps1.setString(4, ass_no);
+                ps1.setInt(5, marks);
+                ps1.setInt(6, 0);
+                ps1.executeUpdate();
+                
+                
+               
                 
                 %>
             <table width="400" align="center" >
@@ -79,28 +110,7 @@
                     <td><label>Student: </label></td>
                     <td>
                     <% 
-                        try
-                        {
-                            
-                            stmt = con1.createStatement();
-                            rs = stmt.executeQuery(student_sql);
-                            while(rs.next())
-                            {
-                                stud_name = rs.getString(1)+" "+rs.getString(2)+" "+rs.getString(3);
-                            %>
-                        <%=stud_name%>
-                            <% 
-                            }
-                            rs1.close();
-                            stmt1.close();
-                            %>
-                            </td>
-                            <%
-
-                        }catch(Exception e)
-                        {
-                            System.out.print(e);
-                        }
+                        
                     %>
                 </tr>
                 <tr>
@@ -116,20 +126,10 @@
                             <td width="125"><button type="submit" class="btn">Submit</button></td>
                         </tr>
             </table>
-                    <input type="hidden" name="stud_name" value="<%=stud_name%>">
-                    <input type="hidden" name="prn" value="<%=prn%>">
-                    <input type="hidden" name="ass_no" value="<%=ass_no%>">
-                    <input type="hidden" name="ass_name" value="<%=ass_name%>">
-                    <input type="hidden" name="ass_max_mks" value="<%=ass_max_mks%>">
-                    <input type="hidden" name="course_code" value="<%=course_code%>">
-                    <input type="hidden" name="present_year" value="<%=present_year%>">
+                <input type="hidden" name="course_code" value="<%=course_code%>">
                     <input type="hidden" name="subject_type" value="<%=subject_type%>">
                     <input type="hidden" name="course_name" value="<%=course_name%>">
                     <input type="hidden" name="faculty_id" value="<%=faculty_id%>">
-                    <input type="hidden" name="subject_name" value="<%=subject_name%>">
-                    <input type="hidden" name="subject_code" value="<%=subject_code%>">
-                    <input type="hidden" name="shift" value="<%=shift%>">
-                    
                        
         </form>
         </div>
