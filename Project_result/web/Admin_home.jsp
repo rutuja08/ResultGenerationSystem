@@ -2,6 +2,8 @@
     Document   : Admin_home
     Created on : 15 Jun, 2019, 2:33:35 PM
     Author     : rutu
+    This is the homepage of an 'Admin' user
+    It shows all functionalities that 'Admin' can perform
 --%>
 <jsp:include page="header.jsp" >
 <jsp:param name="discription" value="Shivajinagar, Pune 5." />
