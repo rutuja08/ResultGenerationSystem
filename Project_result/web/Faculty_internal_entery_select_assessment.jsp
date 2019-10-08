@@ -145,5 +145,8 @@
                        
         </form>
         </div>
+                    <div class="footer">
+    <%@include file="parts/footer.jsp" %>
+    </div>
     </body>
 </html>
