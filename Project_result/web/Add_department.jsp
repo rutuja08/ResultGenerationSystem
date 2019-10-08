@@ -2,8 +2,12 @@
     Document   : Ass_department
     Created on : 16 Sep, 2019, 2:42:44 PM
     Author     : rutu
+    User type 'Admin' only can access this page.
+    This is used for adding new department into 'Course' table.
 --%>
-
+<jsp:include page="header.jsp" >
+<jsp:param name="discription" value="Shivajinagar, Pune 5." />
+</jsp:include>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -41,9 +45,8 @@
         <script type="text/javascript">
             alert("Department Successfully Added");
         </script>
-            
+           <a href="Departmers.jsp" class="btn">Back</a> 
         <%
-            response.sendRedirect("Admin_home.jsp");
     }
     catch(Exception e)
     {
@@ -52,23 +55,29 @@
     }
     
     else{
-        out.println("Cannot add amenity as wrong login");
-%> <jsp:forward page="Admin_login.jsp"></jsp:forward><%
+%><jsp:forward page="Admin_login.jsp"></jsp:forward><%
     }
     %>
 
 
-        <form>
-            <table>
-                <tr><th>Department/Course Name</th></tr>
-                <tr><td></td></tr>
+    <form action="Add_department_jsp.jsp" method="post">
+        <div class="form-style" align="center">
+            <h2>Add Department/Course</h2>
+            <table width="400">
+                <tr>
+                    <td width="125">Department:<span class="required">*</span></td>
+                    <td width="180"><div class="input-group"><input type="text" name="new_dept" id="new_dept" placeholder="Department" required></div></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>
+                        <a href="Departments.jsp" class="btn">Back</a>
+                        <input type="submit" value="Submit" class="btn">
+                        <input type="reset" value="Reset" class="btn">
+                    </td>
+                </tr>            
             </table>
-            
-            
-            Enter New Department: <input type="text" name="new_dept">
-            <button formaction="Add_department_jsp.jsp" onclick="function addDepart()">ADD</button>
-            <button formaction="#"  >CLEAR</button>
-            <button formaction="Departments.jsp"  >BACK</button>
-        </form>
+        </div>
+    </form>
     </body>
 </html>
