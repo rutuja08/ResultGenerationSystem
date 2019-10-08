@@ -2,6 +2,7 @@
     Document   : Add_Security_Question
     Created on : 6 Oct, 2019, 3:12:37 PM
     Author     : Mukta
+    Admin can add new security questions using this page.
 --%>
 <jsp:include page="header.jsp" >
 <jsp:param name="discription" value="Shivajinagar, Pune 5." />
