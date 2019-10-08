@@ -73,3 +73,6 @@ else
     <%  
 }  
 %>  
+</center>
+<%@include file="parts/footer.jsp" %>
+    </body>
