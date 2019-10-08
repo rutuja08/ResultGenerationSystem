@@ -17,11 +17,12 @@
     </head>
     <body>
         <%
-            String first_name, middle_name, last_name, prn, email_id, sex, contact, answer, division,joining_yr;
+            String first_name, middle_name,present_class, last_name, prn, email_id, sex, contact, answer, division,joining_yr;
             int course_code,secquest_no,shift;
             
             joining_yr= request.getParameter("joining_yr");
             first_name = request.getParameter("first_name");
+            present_class = request.getParameter("present_class");
             middle_name = request.getParameter("middle_name");
             last_name = request.getParameter("last_name");
             sex = request.getParameter("sex");
@@ -53,8 +54,8 @@
             
           //  String query = "INSERT INTO Result_generation.Student VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
             String sql = "INSERT INTO `Student`(`stud_reg_no`, `prn`, `first_name`, `middle_name`, `last_name`,"
-            + "`email_id`, `password`, `secquest_no`, `answer`, `contact`, `joining_yr`, `sex`,"
-            + "`shift`, `division`, `course_code`) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";                              
+            + "`email_id`, `password`, `secquest_no`, `answer`, `contact`, `joining_yr`,`present_class`, `sex`,"
+            + "`shift`, `division`, `course_code`) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";                              
             try
             {
                 Class.forName(Connect.DRIVER);
@@ -73,10 +74,11 @@
                 ps.setString(9, answer);
                 ps.setString(10, contact);
                 ps.setString(11, joining_yr);
-                ps.setString(12, sex);
-                ps.setInt(13, shift);
-                ps.setString(14, division);    
-                ps.setInt(15, course_code);
+                ps.setString(12, present_class);
+                ps.setString(13, sex);
+                ps.setInt(14, shift);
+                ps.setString(15, division);    
+                ps.setInt(16, course_code);
             
                 ps.executeUpdate();
                 %>

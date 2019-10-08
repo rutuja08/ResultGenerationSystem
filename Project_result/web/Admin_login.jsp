@@ -14,7 +14,7 @@
     
 
 <div class="form-style">  
-        <h2 align="center">Admin Login Form</h2>
+        <h2 align="center">Login Form</h2>
         
         <form action="Admin_login_process.jsp" method="POST">
 

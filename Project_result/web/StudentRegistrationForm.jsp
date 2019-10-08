@@ -112,7 +112,21 @@ function hideURLbar(){ window.scrollTo(0,1); }
                                         <input type="text" name="joining_yr" placeholder="Joining Year" required="required" />
                                         <div ></div>
 				</div>
-                                <div >
+                                <div >	
+					<span><i  aria-hidden="true"></i></span>
+                                        Present Class: <select name="present_class" class="select">
+                                            <option value='BE'>BE</option>
+                                            <option value='FY/FE'>FY/FE</option>
+                                            <option value='SY/SE'>SY/SE</option>
+                                            <option value='TY/TE'>TY/TE</option>
+                                            
+                                        </select>
+                                        
+					<div ></div>
+				</div>
+				
+                                        
+                                        <div >
 					<span><i aria-hidden="true"></i></span>
                                          
                                         <input type="text" name="division" placeholder="Division" required="required" />

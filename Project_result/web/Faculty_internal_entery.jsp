@@ -19,7 +19,7 @@
     <body  class="body">
         <div class="form-style">  
         <h2 align="center">Select Type For Internal Marks</h2>
-        <form action="#" method="GET">
+        <form action="Faculty_internal_entery_select.jsp" method="GET">
             <%
                 out.print(""+session.getAttribute("admin_name"));
                 Class.forName(Connect.DRIVER);

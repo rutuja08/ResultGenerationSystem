@@ -17,10 +17,11 @@
 boolean status=false;  
 
 int course_code;
+int faculty_id;
 String first_name, prefix, last_name;
 String user_type = request.getParameter("user_type");
 
-String sql = "select prefix,first_name,last_name,course_code from  Result_generation.AdminFacultyUsers where email_id=? and password=?";
+String sql = "select ID,prefix,first_name,last_name,course_code from  Result_generation.AdminFacultyUsers where email_id=? and password=?";
     
     try{  
         Connection con_result=ConnectionProvider.getCon();  
@@ -33,15 +34,17 @@ String sql = "select prefix,first_name,last_name,course_code from  Result_genera
         ResultSet rs = ps.executeQuery();  
         
         status = rs.next();
-        prefix = rs.getString(1);
-        first_name = rs.getString(2);
-        last_name = rs.getString(3);
-        course_code = rs.getInt(4);
+        faculty_id = rs.getInt(1);
+        prefix = rs.getString(2);
+        first_name = rs.getString(3);
+        last_name = rs.getString(4);
+        course_code = rs.getInt(5);
        
         ps.clearParameters();
         
         String admin_name = prefix+" "+first_name+" "+last_name;
         session.setAttribute("admin_name",admin_name );
+        session.setAttribute("faculty_id",faculty_id );
         session.setAttribute("faculty_course_code", course_code);
         session.setAttribute("admin_email_id",request.getParameter("email_id"));
         if(rs.next())
