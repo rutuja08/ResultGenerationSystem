@@ -23,5 +23,8 @@
               int faculty_id = Integer.parseInt(session.getAttribute("faculty_id"));
             %>
         </div>
+        </center>
+<%@include file="parts/footer.jsp" %>
+    </body>
     </body>
 </html>
