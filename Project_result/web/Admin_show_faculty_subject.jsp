@@ -2,6 +2,7 @@
     Document   : Admin_show_faculty_subject
     Created on : 6 Oct, 2019, 4:55:56 PM
     Author     : rutu
+    This shows the pairs of faculty and subject from 'FacultySubject' table.
 --%>
 
 <jsp:include page="header.jsp" >
@@ -17,7 +18,7 @@
         <title>Faculty subject pair</title>
         
     </head>
-    <body  class="body">
+    <body>
         <div class="form-style" align="center">  
         <h2 align="center">Faculty Subject Pair</h2>
         <form>
