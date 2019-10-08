@@ -25,7 +25,7 @@
                 </tr>
                 <tr>
                     <td></td>
-                    <td><a href="#" class="btn">Back</a>
+                    <td><a href="Admin_home.jsp" class="btn">Back</a>
                         <button type="submit" class="btn">Submit</button>
                         <button type="reset" class="btn">Reset</button>
                     </td>
