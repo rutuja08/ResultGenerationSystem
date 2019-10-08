@@ -202,6 +202,7 @@
                         
             </table>
                        <input type="hidden" name="course_code" value="<%=course_code%>">
+                       
         </form>
         </div>
         <%@include file="parts/footer.jsp" %>

@@ -35,14 +35,14 @@
   String subject_code = request.getParameter("subject_code");
   
   faculty_sub_id = academic_year+faculty_id+subject_code;
-  out.print(faculty_id);
-  out.print(academic_year);
-  out.print(subject_code);
+  //out.print(faculty_id);
+ // out.print(academic_year);
+  //out.print(subject_code);
   try
   {
       rs = stmt.executeQuery("SELECT `faculty_sub_id` FROM `FacultySubject` WHERE  `academic_year`= '"+ academic_year+"' and "
               + "`faculty_id`= "+faculty_id+" and `subject_code`="+subject_code);
-      if(rs!=null)
+      if(rs.next())
       {
           %>
         <script type="text/javascript">
@@ -62,9 +62,9 @@ else{
     ps.setString(2, academic_year);
     ps.setInt(3, faculty_id);
     ps.setString(4, subject_code);
-    out.println(ps);
+    //out.println(ps);
     res = ps.executeUpdate();
-    out.println(ps.executeUpdate());
+    //out.println(ps.executeUpdate());
     
     %> 
         <script type="text/javascript">
@@ -78,8 +78,9 @@ else{
     
     %>
     <input type="hidden" name="academic_year" value="<%=request.getParameter("academic_year")%>">
+    <input type="hidden" name="faculty_id" value="faculty_id">
     
-        <a href='Admin_show_faculty_subject.jsp?course_code=<%=request.getParameter("course_code") %>&academic_year=<%=academic_year %>' class="btn">Show Data</a>
+        <a href='Admin_show_faculty_subject.jsp?course_code=<%=request.getParameter("course_code") %>&academic_year=<%=academic_year %>&faculty_id=<%=faculty_id %>' class="btn">Show Data</a>
     <h3>
         </h3>
         

@@ -1,6 +1,6 @@
 <%-- 
-    Document   : Faculty_internal_marks_entery
-    Created on : 8 Oct, 2019, 3:28:17 PM
+    Document   : Faculty_internal_marks_entery_specific
+    Created on : 8 Oct, 2019, 4:52:04 PM
     Author     : rutu
 --%>
 
@@ -19,8 +19,8 @@
     </head>
     <body  class="body">
         <div class="form-style">  
-        <h2 align="center">Internal Marks</h2>
-        <form method="GET" action="Faculty_internal_marks_entery_specific.jsp">
+        <h2 align="center">Enter Internal Marks</h2>
+        <form method="GET" action="Faculty_internal_marks_entery_specific_single_stud.jsp">
             <%
                 
                 out.print(""+session.getAttribute("admin_name"));
@@ -29,6 +29,7 @@
                 Statement stmt=null, stmt1=null;
                 ResultSet rs=null, rs1= null;
                 
+                long prn = Long.parseLong(request.getParameter("prn"));
                 String subject_type = request.getParameter("subject_type");
                 int faculty_id = Integer.parseInt(request.getParameter("faculty_id"));
                 String faculty_name = (String)session.getAttribute("admin_name");
@@ -39,20 +40,13 @@
                 String present_year = request.getParameter("present_year");
                 int shift = Integer.parseInt(request.getParameter("shift"));
                 String ass_no = request.getParameter("ass_no");
-                String ass_name= null;
-                int ass_max_mks=0;
-                String stud_name;
+                String ass_name= request.getParameter("ass_name");
+                int ass_max_mks=Integer.parseInt(request.getParameter("ass_max_mks"));
+                String stud_name=null;
+                String student_sql="SELECT `first_name`, `middle_name`, `last_name` FROM"
+                        + " `Student` WHERE `prn`="+prn;
                 
-                String student_sql="SELECT `prn`, `first_name`, `middle_name`, `last_name` FROM"
-                        + " `Student` WHERE `course_code`="+course_code+" and `present_class`='"+present_year+"' and `shift`= "+shift;
                 
-                String theory_sql_ass = "SELECT `TheoryAssessmentTools`.`theory_ass_name`, `TheoryAssessmentTools`.`max_mks` FROM `AssessmentTools`, `TheoryAssessmentTools` WHERE "
-                        + "`AssessmentTools`.`assessment_tool_no`= `TheoryAssessmentTools`.`theory_ass_no` and `AssessmentTools`.`assessment_tool_no`='"+ass_no+"'";
-                String practical_sql_ass = " SELECT  `PracticalAssessmentTools`.`practical_ass_name`, `PracticalAssessmentTools`.`max_mks` FROM `AssessmentTools`, `PracticalAssessmentTools` WHERE"
-                        + " `AssessmentTools`.`assessment_tool_no`= `PracticalAssessmentTools`.`practical_ass_no` and `AssessmentTools`.`assessment_tool_no`='"+ass_no+"' ";
-                String other_sql_ass = "SELECT `OtherAssessmentTools`.`other_ass_name`,`OtherAssessmentTools`.`max_mks` FROM `OtherAssessmentTools`, `AssessmentTools`WHERE "
-                        + " `OtherAssessmentTools`.`other_ass_no`= `AssessmentTools`.`assessment_tool_no` and `AssessmentTools`.`assessment_tool_no`='"+ass_no+"'";
-
                 %>
             <table width="400" align="center" >
                 <tr>
@@ -77,50 +71,13 @@
                 </tr>
                 <tr>
                     <td><label>Assessment Tool: </label></td>
-                    <td>
-                    <% 
-                        try
-                        {
-                            
-                            stmt1 = con1.createStatement();
-                            
-                            if(subject_type.equals("theory"))
-                            {
-                                rs1 = stmt1.executeQuery(theory_sql_ass);
-                            }
-                            else if(subject_type.equals("practical"))
-                            {
-                                rs1 = stmt1.executeQuery(practical_sql_ass);
-                            }
-                            else
-                            {
-                                rs1 = stmt1.executeQuery(other_sql_ass);
-                            }
-                        
-                            while(rs1.next())
-                            {
-                                ass_name = rs1.getString(1);
-                                ass_max_mks = rs1.getInt(2);
-                            %>
-                            <%=rs1.getString(1)%>
-                            <% 
-                            }
-                            rs1.close();
-                            stmt1.close();
-                            %>
-                            </td>
-                            <%
-
-                        }catch(Exception e)
-                        {
-                            System.out.print(e);
-                        }
-                    %>
+                    <td><%=ass_name%></td>
+                    
                 </tr>
                     
                 <tr>
                     <td><label>Student: </label></td>
-                    <td><select name="prn">
+                    <td>
                     <% 
                         try
                         {
@@ -129,15 +86,14 @@
                             rs = stmt.executeQuery(student_sql);
                             while(rs.next())
                             {
-                                stud_name = rs.getString(2)+" "+rs.getString(3)+" "+rs.getString(4);
+                                stud_name = rs.getString(1)+" "+rs.getString(2)+" "+rs.getString(3);
                             %>
-                            <option value="<%=rs.getString(1)%>"><%=stud_name%></option>
+                        <%=stud_name%>
                             <% 
                             }
                             rs1.close();
                             stmt1.close();
                             %>
-                        </select>
                             </td>
                             <%
 
@@ -147,15 +103,24 @@
                         }
                     %>
                 </tr>
+                <tr>
+                    <td><label>No Of Attempt: </label></td>
+                    <td><input type="text" name="attempt_no" value="1"></td>
+                </tr>
+                <tr><td><label>Enter Marks: </label></td>
+                    <td><label>Maximim Marks:<%=ass_max_mks%></label><input type="text" name="marks"></td>
+                </tr>
                 
                 <tr>
                             <td width="125"><a href="Faculty_internal_entery.jsp" class="btn">Back</a></td>
                             <td width="125"><button type="submit" class="btn">Submit</button></td>
                         </tr>
             </table>
+                    <input type="hidden" name="stud_name" value="<%=stud_name%>">
+                    <input type="hidden" name="prn" value="<%=prn%>">
+                    <input type="hidden" name="ass_no" value="<%=ass_no%>">
                     <input type="hidden" name="ass_name" value="<%=ass_name%>">
                     <input type="hidden" name="ass_max_mks" value="<%=ass_max_mks%>">
-                    <input type="hidden" name="ass_no" value="<%=ass_no%>">
                     <input type="hidden" name="course_code" value="<%=course_code%>">
                     <input type="hidden" name="present_year" value="<%=present_year%>">
                     <input type="hidden" name="subject_type" value="<%=subject_type%>">
@@ -164,6 +129,7 @@
                     <input type="hidden" name="subject_name" value="<%=subject_name%>">
                     <input type="hidden" name="subject_code" value="<%=subject_code%>">
                     <input type="hidden" name="shift" value="<%=shift%>">
+                    
                        
         </form>
         </div>

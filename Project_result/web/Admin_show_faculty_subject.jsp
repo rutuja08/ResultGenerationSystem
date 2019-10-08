@@ -41,7 +41,7 @@
                 String name;
                 String theory_sql = null, practical_sql = null, other_sql = null;
                 int course_code = Integer.parseInt(request.getParameter("course_code"));
-                
+                int faculty_id = Integer.parseInt(request.getParameter("faculty_id"));
                 String academic_year = request.getParameter("academic_year");
                 String subject_type = (String)session.getAttribute("subject_type");
                 
@@ -58,7 +58,7 @@
                         + ", `TheorySubject`.`theory_sub_name`FROM `AdminFacultyUsers`, `FacultySubject`,"
                         + "`TheorySubject` WHERE `AdminFacultyUsers`.`course_code`="+course_code+" and "
                         + "`FacultySubject`.`subject_code` = `TheorySubject`.`theory_sub_code` "
-                        + "and `FacultySubject`.`academic_year`= '"+academic_year+"'";
+                        + "and `FacultySubject`.`academic_year`= '"+academic_year+"'and `AdminFacultyUsers`.`ID`= `FacultySubject`.`faculty_id` and `FacultySubject`.`faculty_id`="+faculty_id;
                     
                     
                      rs= stmt.executeQuery(theory_sql);
