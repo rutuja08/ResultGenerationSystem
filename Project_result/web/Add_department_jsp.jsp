@@ -2,13 +2,19 @@
     Document   : Add_department
     Created on : 16 Sep, 2019, 2:09:09 PM
     Author     : rutu
+    New department is added into database using this table
 --%>
-
+<jsp:include page="header.jsp" >
+<jsp:param name="discription" value="Shivajinagar, Pune 5." />
+</jsp:include>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="java.sql.*" %>
 <%@page import="bean.*" %>
-
-<%  
+<html>
+    <head></head>
+    <body>
+        <div class="form-style" align="center">
+            <%  
     if(session.getAttribute("admin_name")!=null)
     {    
     
@@ -24,17 +30,15 @@
         ps.setString(1, null);
     ps.setString(2, new_dept);
     int row= ps.executeUpdate();
-    if(row==1)
-        out.println("success");
-        
-        
+    if(row>0)
+    {
         %>
         <script type="text/javascript">
             alert("Department Successfully Added");
         </script>
-            
+        <a href="Departments.jsp" class="btn">Back</a>    
         <%
-            response.sendRedirect("Admin_home.jsp");
+    }
     }
     catch(Exception e)
     {
@@ -43,8 +47,17 @@
     }
     
     else{
-        out.println("Cannot add amenity as wrong login");
-%> <jsp:forward page="Admin_login.jsp"></jsp:forward><%
+        %>
+        <script type="text/javascript">
+            alert("Cannot add amenity as wrong login");
+        </script>
+        <a href="Admin_login.jsp" class="btn">Back</a>    
+        <%
     }
     %>
+        </div>
+        <%@include file="parts/footer.jsp" %>
+    </body>
+</html>
+
 
