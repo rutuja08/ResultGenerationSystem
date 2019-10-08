@@ -4,7 +4,7 @@
     Author     : rutu
 --%>
 
-<jsp:include page="header.jsp" >
+<jsp:include page="parts/firstheader.jsp" >
 <jsp:param name="discription" value="Shivajinagar, Pune 5." />
 </jsp:include>
 
@@ -21,7 +21,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        
+        <link rel="stylesheet" href="css/valid.css" type="text/css">
     </head>
     <body>
         <div class="form-style" align="center">
@@ -95,22 +95,10 @@ else
  <script type="text/javascript">
                 alert("Sorry, email, password or restricted access error");
             </script>
-    <a href="Admin_login.jsp" class="btn"></a>
+    <a href="Admin_login.jsp" class="btn">Back</a>
  
  <%
 }
-}
-else  
-{  
-out.print("Sorry, email, password or restricted access error");  
-%>  
-<script type="text/javascript">
-                alert("Sorry, email or password is wrong");
-            </script>
-            <p/>
-    <a href="Admin_login.jsp" class="btn">Sign In Again</a>
- 
-<%  
 }  
 %>  
 <%@include file="parts/footer.jsp" %>

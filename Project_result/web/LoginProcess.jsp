@@ -2,7 +2,11 @@
     Document   : LoginProcess
     Created on : 19 Mar, 2019, 6:04:35 PM
     Author     : rutu
+    Using this page student type user can log in into the system.
 --%>
+<jsp:include page="parts/firstheader.jsp" >
+<jsp:param name="discription" value="Shivajinagar, Pune 5." />
+</jsp:include>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="bean.*"%>  
@@ -12,7 +16,10 @@
 <jsp:setProperty property="email_id" name="Student"/>
 <jsp:setProperty property="password" name="Student"/>  
 </jsp:useBean>
-
+<html> 
+    <head><link rel="stylesheet" href="css/valid.css" type="text/css"></head>
+    <body>
+        <div class="form-style">
 <%  
 boolean status=false;//LoginDao.validate(Student);  
 
@@ -52,16 +59,17 @@ String sql = "select first_name,course_code,prn from Result_generation.Student w
 
 if(status)
 {  
-out.println("You r successfully logged in");  
+     
 session.setAttribute("session","TRUE");  
-%> 
-<jsp:include page="Student_home.jsp"></jsp:include>  <%
+response.sendRedirect("Student_home.jsp");
 }  
 else  
 {  
-out.print("Sorry, email or password error");  
-%>  
-<jsp:include page="Login_page.jsp"></jsp:include>  
-<%  
+    %>
+    <script type="text/javascript">
+        alert("Email id or password is incorrect.");
+    </script>
+    <a href="Login_page.jsp" class="btn">Back</a>
+    <%  
 }  
 %>  
