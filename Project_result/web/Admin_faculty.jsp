@@ -16,30 +16,37 @@
         <title>Admin Faculty</title>
     </head>
     <body class="body">
-         <div class="form-style">  
-        <h2 align='center'>Admin Faculty</h2>
-        <h3 align="center"><%
-            out.print("Welcome, "+session.getAttribute("admin_name"));
-        %></h3>
+         <div class="form-style" align="center">  
+        <h2><%out.print("Welcome, "+session.getAttribute("admin_name"));%></h2>
        
         <form>
             <table width="400" align="center">
                 <tr>
+                    <td width="125"></td>
                     <td>
-                        <input type="submit" class="btn" formaction="Admin_add_new_faculty.jsp" value="ADD NEW">
+                        <input type="submit" class="btn" formaction="AdminFacultyRegistrationForm.jsp" value="ADD FACULTY">
                     </td>
-                
+                </tr>
+                <tr>
+                    <td width="125"></td>
                     <td>
-                        <input type="submit" class="btn" formaction="Admin_edit_existing_faculty.jsp" value="EDIT EXISTING">
+                        <input type="submit" class="btn" formaction="Admin_edit_existing_faculty.jsp" value="EDIT FACULTY">
                     </td>
+                </tr>
+                <tr>
+                    <td width="125"></td>
                     <td>
                         <input type="submit" class="btn" formaction="Admin_add_faculty_subject.jsp" value="ADD FACULTY SUBJECT">
                     </td>
                 </tr>
                 <tr>
-                <td><a href="#" class="btn">Back</a></td>
-                <td><button type="submit" class="btn">Submit</button></td>
-            </tr>
+                    <td width="125"></td>
+                    <td height="5"></td>
+                </tr>
+                <tr>
+                    <td width="125"></td>
+                    <td><a href="Admin_home.jsp" class="btn">Back</a></td>
+                </tr>
             </table>
         </form>
         </div>
