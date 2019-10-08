@@ -32,7 +32,7 @@
             
             email_id = request.getParameter("email_id");
             course_code = Integer.parseInt(request.getParameter("course_code"));
-            user_type = request.getParameter("user_type");
+            //user_type = request.getParameter("user_type");
             
             answer = request.getParameter("answer");
             
@@ -46,6 +46,7 @@
             <script type="text/javascript">
                 alert("Password is not matching. Kindly check it.");
             </script>
+            <a href="AdminFacultyRegistrationForm.jsp" class="btn"></a>
             <%
             }
 
@@ -56,8 +57,8 @@
             
           //  String query = "INSERT INTO Result_generation.Student VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
             String sql = "INSERT INTO `AdminFacultyUsers`(`ID`, `prefix`, `first_name`, `middle_name`, `last_name`, `email_id`, "
-                        + "`password`, `secquest_no`, `answer`, `contact`, `course_code`, 'user_type') "
-                        +"VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";                              
+                        + "`password`, `secquest_no`, `answer`, `contact`, `course_code`) "
+                        +"VALUES (?,?,?,?,?,?,?,?,?,?,?)";                              
             try
             {
                 Class.forName(Connect.DRIVER);
@@ -76,11 +77,12 @@
                 ps.setString(9, answer);
                 ps.setString(10, contact);
                 ps.setInt(11, course_code);
-                ps.setString(12, user_type);
+                //ps.setString(12, user_type);
                 ps.executeUpdate();
                 %>
                 <b><% out.print("Welcome "+ first_name+". You have successfuly registerd.");%></b>
-                <a href="Admin_login.jsp" class="btn">Back</a>
+                <p/>
+                <a href="Admin_login.jsp" class="btn">Sign In</a>
                 <%
                 }
                 catch(Exception e)
@@ -91,5 +93,6 @@
                  }
                   %>
                   <%@include file="parts/footer.jsp" %>
+        </div>
     </body>
 </html>

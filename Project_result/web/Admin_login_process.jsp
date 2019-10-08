@@ -4,6 +4,10 @@
     Author     : rutu
 --%>
 
+<jsp:include page="header.jsp" >
+<jsp:param name="discription" value="Shivajinagar, Pune 5." />
+</jsp:include>
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="bean.*"%>  
 <%@page import="java.sql.*"%>  
@@ -13,15 +17,26 @@
 <jsp:setProperty property="password" name="Admin"/>  
 </jsp:useBean>
 
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        
+    </head>
+    <body>
+        <div class="form-style" align="center">
+
 <%  
 boolean status=false;  
 
 int course_code;
 int faculty_id;
 String first_name, prefix, last_name;
+String user_type_from_db=null;
 String user_type = request.getParameter("user_type");
 
-String sql = "select ID,prefix,first_name,last_name,course_code from  Result_generation.AdminFacultyUsers where email_id=? and password=?";
+String sql = "select ID,prefix,first_name,last_name,course_code,user_type from "
+        + " Result_generation.AdminFacultyUsers where email_id=? and password=?";
     
     try{  
         Connection con_result=ConnectionProvider.getCon();  
@@ -39,6 +54,7 @@ String sql = "select ID,prefix,first_name,last_name,course_code from  Result_gen
         first_name = rs.getString(3);
         last_name = rs.getString(4);
         course_code = rs.getInt(5);
+        user_type_from_db = rs.getString(6);
        
         ps.clearParameters();
         
@@ -61,24 +77,43 @@ if(status)
 {  
 out.println("You are successfully logged in..");  
 session.setAttribute("user_type",user_type);
-out.print(user_type);
-if(user_type.equals( "admin"))
+out.print(user_type_from_db);
+if(user_type_from_db.equals("a"))
 {
     out.print(user_type);
     response.sendRedirect("Admin_home.jsp");
 
 }
-else if(user_type.equals( "faculty"))
+else if(user_type.equals("faculty") && user_type_from_db.equals("f"))
 {
 out.print(user_type);
 response.sendRedirect("Faculty_home.jsp");
 }
+else  
+{  
+ %>
+ <script type="text/javascript">
+                alert("Sorry, email, password or restricted access error");
+            </script>
+    <a href="Admin_login.jsp" class="btn"></a>
+ 
+ <%
+}
 }
 else  
 {  
-out.print("Sorry, email or password error");  
+out.print("Sorry, email, password or restricted access error");  
 %>  
-<jsp:include page="Login_page.jsp"></jsp:include>  
+<script type="text/javascript">
+                alert("Sorry, email or password is wrong");
+            </script>
+            <p/>
+    <a href="Admin_login.jsp" class="btn">Sign In Again</a>
+ 
 <%  
 }  
 %>  
+<%@include file="parts/footer.jsp" %>
+        </div>
+    </body>
+</html>
