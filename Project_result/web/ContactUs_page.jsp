@@ -51,5 +51,8 @@
 <br><br>
 <center><a href="Welcome_page.jsp" class="btn">Back</a></center>
 </div>
+        </center>
+<%@include file="parts/footer.jsp" %>
+    </body>
     </body>
 </html>
