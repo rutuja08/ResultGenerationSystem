@@ -20,7 +20,7 @@
     <body  class="body">
         <div class="form-style">  
         <h2 align="center">Internal Marks</h2>
-        <form method="GET" action="Facutly_internal_entery_select_assessment.jsp">
+        <form method="GET" action="Faculty_internal_entery_select_assessment.jsp">
             
             
             <table width="400" align="center" >
@@ -33,13 +33,13 @@
                 Connection con1 = DriverManager.getConnection(Connect.URLR, Connect.USER, Connect.PASS);
                 Statement stmt,stmt1;
                 ResultSet rs,rs1;
-                String name;
+                String subject_name=null, subject_code=null;
                 
                 String subject_type = request.getParameter("subject_type");
                 int faculty_id = (int)session.getAttribute("faculty_id");
                 int course_code = (int)session.getAttribute("faculty_course_code");
                 String course_name = request.getParameter("course_name");
-                session.setAttribute("subject_type", subject_type);
+                
                 
                 
                 String  theory_sql="SELECT `TheorySubject`.`theory_sub_code`, `TheorySubject`.`theory_sub_name`"
@@ -112,7 +112,7 @@
 
                             <tr>
                                 <td><label>Subject: </label></td>
-                                <td><select name="year" >
+                                <td><select name="subject_code" >
                             <% 
 
                             while(rs1.next())
@@ -152,6 +152,9 @@
             </table>
                        <input type="hidden" name="course_code" value="<%=course_code%>">
                        <input type="hidden" name="subject_type" value="<%=subject_type%>">
+                       <input type="hidden" name="course_name" value="<%=course_name%>">
+                       <input type="hidden" name="faculty_id" value="<%=faculty_id%>">
+                       
         </form>
         </div>
     </body>
