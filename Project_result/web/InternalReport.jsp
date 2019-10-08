@@ -97,5 +97,8 @@
             </table>
         </form>
         </div>
+                        </center>
+<%@include file="parts/footer.jsp" %>
+    </body>
     </body>
 </html>

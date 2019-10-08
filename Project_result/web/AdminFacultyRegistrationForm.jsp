@@ -4,14 +4,16 @@
     Author     : rutu
     This page allows Admin or Faculty to register himself/herself.
 --%>
-<jsp:include page="header.jsp" >
+<jsp:include page="parts/firstheader.jsp" >
 <jsp:param name="discription" value="Shivajinagar, Pune 5." />
 </jsp:include>
 <%@include file="Connection.jsp" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html>
     <head>
+        <link rel="stylesheet" href="css/valid.css" type="text/css">
 <!-- Meta tag Keywords -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 

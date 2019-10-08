@@ -94,4 +94,7 @@
                  }
                   %>
     </body>
+    </center>
+<%@include file="parts/footer.jsp" %>
+    </body>
 </html>
