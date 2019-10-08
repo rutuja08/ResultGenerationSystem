@@ -2,8 +2,11 @@
     Document   : AdminFaculty_register
     Created on : 5 Oct, 2019, 7:31:49 PM
     Author     : rutu
+    Information entered by user on AdminFacultyRegistrationForm.jsp is retrieved here and added to the database.
 --%>
-
+<jsp:include page="header.jsp" >
+<jsp:param name="discription" value="Shivajinagar, Pune 5." />
+</jsp:include>
 <%@page import="java.text.DateFormat"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page language="java" contentType="text/html" %>
@@ -16,8 +19,9 @@
         
     </head>
     <body>
+        <div class="form-style" align="center">
         <%
-            String prefix,first_name, middle_name, last_name, email_id, contact, answer;
+            String prefix,first_name, middle_name, last_name, email_id, contact, answer, user_type;
             int course_code,secquest_no;
             
             prefix = request.getParameter("prefix");
@@ -28,6 +32,7 @@
             
             email_id = request.getParameter("email_id");
             course_code = Integer.parseInt(request.getParameter("course_code"));
+            user_type = request.getParameter("user_type");
             
             answer = request.getParameter("answer");
             
@@ -35,15 +40,13 @@
             secquest_no = Integer.parseInt(request.getParameter("secquest_no"));
             String password= request.getParameter("password");
             String rpass= request.getParameter("reEnterPassword");
-            
-            if(password!=null && rpass!= null)
+            if(!password.equals(rpass))
             {
-                if(!password.equals(rpass))
-                {
-         %>
-          <%@include file="password_error_page.html" %>
-         <%
-                }
+            %>
+            <script type="text/javascript">
+                alert("Password is not matching. Kindly check it.");
+            </script>
+            <%
             }
 
             Statement stmt;
@@ -53,8 +56,8 @@
             
           //  String query = "INSERT INTO Result_generation.Student VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
             String sql = "INSERT INTO `AdminFacultyUsers`(`ID`, `prefix`, `first_name`, `middle_name`, `last_name`, `email_id`, "
-                        + "`password`, `secquest_no`, `answer`, `contact`, `course_code`) "
-                        +"VALUES (?,?,?,?,?,?,?,?,?,?,?)";                              
+                        + "`password`, `secquest_no`, `answer`, `contact`, `course_code`, 'user_type') "
+                        +"VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";                              
             try
             {
                 Class.forName(Connect.DRIVER);
@@ -73,11 +76,11 @@
                 ps.setString(9, answer);
                 ps.setString(10, contact);
                 ps.setInt(11, course_code);
-            
+                ps.setString(12, user_type);
                 ps.executeUpdate();
                 %>
-                <h3><% out.print("Welcome "+ first_name+" you have successfuly registerd.");%></h3>
-                 <%@include file="Admin_login.jsp" %>
+                <b><% out.print("Welcome "+ first_name+". You have successfuly registerd.");%></b>
+                <a href="Admin_login.jsp" class="btn">Back</a>
                 <%
                 }
                 catch(Exception e)
@@ -87,5 +90,6 @@
                   <%   
                  }
                   %>
+                  <%@include file="parts/footer.jsp" %>
     </body>
 </html>
