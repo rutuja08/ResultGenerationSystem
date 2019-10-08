@@ -13,5 +13,7 @@
     </head>
     <body>
         <h1>Add New Faculty</h1>
+        <!-- Present admin will give user type to faculty
+            whether the faculty is admin or not, by adding user_type in database.-->
     </body>
 </html>

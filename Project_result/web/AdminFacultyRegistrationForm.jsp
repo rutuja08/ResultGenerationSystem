@@ -26,7 +26,7 @@ function hideURLbar(){ window.scrollTo(0,1); }
         
         var newpassword = document.getElementById("Npassword");
 	var confirmpassword = document.getElementById("reEnterPassword");
-        var regx = ^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2, 5});
+        //var regx = ^([a-zA-Z0-9 \-\.]+)@([a-zA-Z0-9 \-\.]+)\.([a-zA-Z]{2, 5});
         
         if(regx.test(email_id))
         {
@@ -149,16 +149,7 @@ function hideURLbar(){ window.scrollTo(0,1); }
                         </select></div>
                     </td>
                 </tr>
-                <tr>
-                    <td width="125">User Type:<span class="required">*</span></td>
-                    <td width="180"><div class="input-group">
-                            <select name="user_type" required="">
-                                <option value="">--User Type--</option>
-                                <option value="Admin">Admin</option>
-                                <option value="Faculty">Faculty</option>
-                            </select>
-                        </div></td>
-                </tr>
+               
 		<tr>
                     <td width="125">Security Question:<span class="required">*</span></td>
                     <td width="180"><div class="input-group">
