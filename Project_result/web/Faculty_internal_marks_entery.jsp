@@ -48,7 +48,7 @@
                 
                 String theory_sql_ass = "SELECT `TheoryAssessmentTools`.`theory_ass_name`, `TheoryAssessmentTools`.`max_mks` FROM `AssessmentTools`, `TheoryAssessmentTools` WHERE "
                         + "`AssessmentTools`.`assessment_tool_no`= `TheoryAssessmentTools`.`theory_ass_no` and `AssessmentTools`.`assessment_tool_no`='"+ass_no+"'";
-                String practical_sql_ass = " SELECT 	`PracticalAssessmentTools`.`practical_ass_name`, `PracticalAssessmentTools`.`max_mks` FROM `AssessmentTools`, `PracticalAssessmentTools` WHERE"
+                String practical_sql_ass = " SELECT  `PracticalAssessmentTools`.`practical_ass_name`, `PracticalAssessmentTools`.`max_mks` FROM `AssessmentTools`, `PracticalAssessmentTools` WHERE"
                         + " `AssessmentTools`.`assessment_tool_no`= `PracticalAssessmentTools`.`practical_ass_no` and `AssessmentTools`.`assessment_tool_no`='"+ass_no+"' ";
                 String other_sql_ass = "SELECT `OtherAssessmentTools`.`other_ass_name`,`OtherAssessmentTools`.`max_mks` FROM `OtherAssessmentTools`, `AssessmentTools`WHERE "
                         + " `OtherAssessmentTools`.`other_ass_no`= `AssessmentTools`.`assessment_tool_no` and `AssessmentTools`.`assessment_tool_no`='"+ass_no+"'";
