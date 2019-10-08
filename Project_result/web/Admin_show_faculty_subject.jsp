@@ -133,6 +133,7 @@
             <a href="Admin_add_faculty_subject.jsp" class="btn">Back</a>
         </form>
         </div>
+             <%@include file="parts/footer.jsp" %>
     </body>
     
 </html>
