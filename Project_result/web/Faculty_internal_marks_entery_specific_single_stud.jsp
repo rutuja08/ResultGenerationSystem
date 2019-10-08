@@ -46,7 +46,7 @@
                 int marks = Integer.parseInt(request.getParameter("marks"));
                 int student_sub_no=0;
                 int ass_max_mks=Integer.parseInt(request.getParameter("ass_max_mks"));
-                String stud_name;
+                String stud_name=request.getParameter("stud_name");
                 String student_sql1="INSERT INTO `StudentSubject`(`stud_sub_no`, `prn`, `subject_code`) VALUES (?,?,?)";
                 String select_stud_sub = "SELECT `stud_sub_no` FROM `StudentSubject` WHERE `prn` ="+prn+" and `subject_code`="+subject_code;
                 
@@ -65,7 +65,7 @@
                     {
                         student_sub_no = rs.getInt(1);
                     }
-                    out.print(student_sub_no);
+                    //out.print(student_sub_no);
                 ps1 = con1.prepareStatement(insert_mks);
                 ps1.setString(1, null);
                 ps1.setInt(2, student_sub_no);
@@ -73,64 +73,38 @@
                 ps1.setString(4, ass_no);
                 ps1.setInt(5, marks);
                 ps1.setInt(6, 0);
-                ps1.executeUpdate();
+                int res= ps1.executeUpdate();
                 
                 
+               String select_stud_mks = "SELECT  "
+                       + "`no_of_attempt`, `obtained_mks`FROM `InternalMarks` WHERE stud_sub_no="+student_sub_no;
                
-                
+                       if(res !=0)
+                       {
                 %>
-            <table width="400" align="center" >
-                <tr>
-                    <td>Course Name: </td>
-                    <td><%=course_name%></td>
-                </tr>
-                <tr>
-                    <td><label>Year: </label></td>
-                    <td><%=present_year%></td>
-                </tr>
-                <tr>
-                    <td><label>Shift: </label></td>
-                    <td><%=shift%></td>
-                </tr>
-                <tr>
-                    <td><label>Faculty: </label></td>
-                    <td><%=faculty_name%></td>
-                </tr>
-                <tr>
-                    <td><label>Subject: </label></td>
-                    <td><%=subject_name%></td>
-                </tr>
-                <tr>
-                    <td><label>Assessment Tool: </label></td>
-                    <td><%=ass_name%></td>
-                    
-                </tr>
-                    
-                <tr>
-                    <td><label>Student: </label></td>
-                    <td>
-                    <% 
-                        
-                    %>
-                </tr>
-                <tr>
-                    <td><label>No Of Attempt: </label></td>
-                    <td><input type="text" name="attempt_no" value="1"></td>
-                </tr>
-                <tr><td><label>Enter Marks: </label></td>
-                    <td><label>Maximim Marks:<%=ass_max_mks%></label><input type="text" name="marks"></td>
-                </tr>
+            
+                <script type="text/javascript">
+            alert("Marks Added Successfuly.");
+        </script>
+                <% 
+                    }
                 
-                <tr>
-                            <td width="125"><a href="Faculty_internal_entery.jsp" class="btn">Back</a></td>
-                            <td width="125"><button type="submit" class="btn">Submit</button></td>
-                        </tr>
-            </table>
-                <input type="hidden" name="course_code" value="<%=course_code%>">
+                else
+                %>
+        <script type="text/javascript">
+            alert("Duplicate record.");
+        </script>
+                
+                    <input type="hidden" name="course_code" value="<%=course_code%>">
+                <input type="hidden" name="present_year" value="<%=present_year%>">
                     <input type="hidden" name="subject_type" value="<%=subject_type%>">
                     <input type="hidden" name="course_name" value="<%=course_name%>">
                     <input type="hidden" name="faculty_id" value="<%=faculty_id%>">
-                       
+                    <input type="hidden" name="subject_name" value="<%=subject_name%>">
+                    <input type="hidden" name="subject_code" value="<%=subject_code%>">
+                    <input type="hidden" name="shift" value="<%=shift%>">
+                
+                       <a href="Faculty_internal_marks_entery.jsp?ass_name=<%=ass_name%>&course_code=<%=course_code%>&present_year=<%=present_year%>&subject_type=<%=subject_type%>&course_name=<%=course_name%>&faculty_id=<%=faculty_id%>&subject_name=<%=subject_name%>&subject_code=<%=subject_code%>&shift=<%=shift%>" class="btn">Back</a>
         </form>
         </div>
                     <div class="footer">

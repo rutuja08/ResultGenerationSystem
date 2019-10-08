@@ -39,7 +39,7 @@
                 String present_year = request.getParameter("present_year");
                 int shift = Integer.parseInt(request.getParameter("shift"));
                 String ass_no = request.getParameter("ass_no");
-                String ass_name= null;
+                String ass_name= request.getParameter("ass_name");;
                 int ass_max_mks=0;
                 String stud_name;
                 
