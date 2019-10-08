@@ -20,7 +20,7 @@
     <body  class="body">
         <div class="form-style">  
         <h2 align="center">Internal Marks</h2>
-        <form method="GET" action="#">
+        <form method="GET" action="Facutly_internal_entery_select_assessment.jsp">
             
             
             <table width="400" align="center" >
