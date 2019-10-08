@@ -133,9 +133,9 @@
                         </tr>
             </table>
                 <input type="hidden" name="course_code" value="<%=course_code%>">
-                       <input type="hidden" name="subject_type" value="<%=subject_type%>">
-                       <input type="hidden" name="course_name" value="<%=course_name%>">
-                       <input type="hidden" name="faculty_id" value="<%=faculty_id%>">
+                    <input type="hidden" name="subject_type" value="<%=subject_type%>">
+                    <input type="hidden" name="course_name" value="<%=course_name%>">
+                    <input type="hidden" name="faculty_id" value="<%=faculty_id%>">
                        
         </form>
         </div>
