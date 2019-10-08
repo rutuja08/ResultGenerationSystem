@@ -42,13 +42,35 @@
                 session.setAttribute("subject_type", subject_type);
                 
                 
-                String  course_sql=null;
+                String  theory_sql="SELECT `TheorySubject`.`theory_sub_code`, `TheorySubject`.`theory_sub_name`"
+                        + " FROM `FacultySubject`, `TheorySubject`"
+                        + "WHERE `FacultySubject`.`subject_code`= `TheorySubject`.`theory_sub_code`and `FacultySubject`.`faculty_id`="+faculty_id;
                 
+                String practical_sql="SELECT `PracticalSubject`.`practical_sub_code`, `PracticalSubject`.`practical_sub_name` FROM `FacultySubject`, `PracticalSubject` WHERE "
+                        + "`FacultySubject`.`subject_code`= `PracticalSubject`.`practical_sub_code` and `FacultySubject`.`faculty_id`="+faculty_id;
+                
+                String other_sql = "SELECT `OtherSubject`.`other_sub_code`, `OtherSubject`.`other_sub_name` FROM `FacultySubject`, `OtherSubject` WHERE"
+                        + " `FacultySubject`.`subject_code`= `OtherSubject`.`other_sub_code` and `FacultySubject`.`faculty_id`="+faculty_id;
             try
             {
                 
+                stmt1 = null;
                 stmt = con1.createStatement();
+                stmt1 = con1.createStatement();
                 rs= stmt.executeQuery("SELECT * FROM `Class`");
+                rs1= null;
+                if(subject_type.equals("theory"))
+                    {
+                        rs1= stmt1.executeQuery(theory_sql);
+                    }
+                    else if(subject_type.equals("practical"))
+                    {
+                        rs1= stmt1.executeQuery(practical_sql);
+                    }
+                    else
+                    {
+                        rs1= stmt1.executeQuery(other_sql);
+                    }  
                                     
             %>
             
@@ -70,67 +92,66 @@
             %>
             </select>
             </td>
-            <%
-            }
-            catch(Exception e)
-            {
-                System.out.print(e);
-            }
-            %>
-            </tr>
             
-                <%
-                session.setAttribute("subject_type_faculty_subject", subject_type);
-                //out.println(request.getParameter("subject_type"));
-                
-                course_sql = "SELECT `course_name` FROM `Course` WHERE course_code="+course_code;
-             
-                try
-                {
-                    
-                    stmt1= con1.createStatement();
-                    
-                    
-                    rs1 = stmt1.executeQuery(course_sql);
-                        
-
-                        %>
-                        
-                        <tr>
+            </tr>
+                  <tr>
                             <td>Course Name:</td>
-                            <% 
-                            while(rs1.next())
-                            {
-                            %>
-                            <td><label><%=rs1.getString(1)%></label></td>
-                            <% 
-                            }
-                            rs1.close();
-                            stmt1.close();
-                            %>
+                             
+                            <td><label><%=course_name%></label></td>
                             
                         </tr>
-                        
-                        <%
-                            }
-                            catch(Exception e)
-                            {
-                                System.out.print(e);
-                            }
-                        %>
                         
                         <tr>
                             <td ><label>Faculty : </label></td>
                             <td><%=session.getAttribute("admin_name") %></td>
                             </tr>
+                            <tr>
+                                <td><label>Subject Type: </label></td>
+                                <td><%=subject_type%></td>
+                            </tr>
 
+                            <tr>
+                                <td><label>Subject: </label></td>
+                                <td><select name="year" >
+                            <% 
+
+                            while(rs1.next())
+                            {
+                            %>
+                            <option value="<%=rs1.getString(1)%>"><%=rs1.getString(2)%></option>
+
+                            <% 
+                            }
+                            rs1.close();
+                            stmt1.close();
+
+                            }
+                            catch(Exception e)
+                            {
+                                System.out.print(e);
+                            }
+
+                            %>
+
+                            </select>
+                            </td>
+            
+                            </tr>
+                            <tr>
+                                <td><label>Shift: </label></td>
+                                <td><select name="shift">
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                    </select></td>
+                            </tr>
                         <tr>
-                            <td width="125"><a href="Admin_add_faculty_subject.jsp" class="btn">Back</a></td>
+                            <td width="125"><a href="Faculty_internal_entery.jsp" class="btn">Back</a></td>
                             <td width="125"><button type="submit" class="btn">Submit</button></td>
                         </tr>
                         
             </table>
                        <input type="hidden" name="course_code" value="<%=course_code%>">
+                       <input type="hidden" name="subject_type" value="<%=subject_type%>">
         </form>
         </div>
     </body>
