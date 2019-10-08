@@ -4,12 +4,12 @@
     Author     : rutu
     User type 'Admin' and 'Faculty' can login using this page.
 --%>
-<jsp:include page="header.jsp" >
+<jsp:include page="parts/firstheader.jsp" >
 <jsp:param name="discription" value="Shivajinagar, Pune 5." />
 </jsp:include>
 <!DOCTYPE html>
 <html lang="en">
-
+    <head><link rel="stylesheet" href="css/valid.css" type="text/css"></head>
 
 <body class="body">
     
