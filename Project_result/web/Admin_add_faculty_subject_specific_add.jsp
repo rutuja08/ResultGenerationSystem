@@ -2,6 +2,9 @@
     Document   : Admin_add_faculty_subject_specific_add
     Created on : 6 Oct, 2019, 12:18:47 PM
     Author     : rutu
+    This checks whether data is existing or not 
+    If the record is already existing then it will not be added that record and displays error message is displayed
+    Otherwise record gets added into database table 'FacultySubject'.
 --%>
 <jsp:include page="header.jsp" >
 <jsp:param name="discription" value="Shivajinagar, Pune 5." />
@@ -18,6 +21,7 @@
         
     </head>
     <body>
+        <div class="form-style" align="center">
 <%
   Class.forName(Connect.DRIVER);
   Connection con = DriverManager.getConnection(Connect.URLR, Connect.USER, Connect.PASS);
@@ -88,6 +92,8 @@ else{
       <% 
   }
 %>
+        </div>
+         <%@include file="parts/footer.jsp" %>
 </body>
 
 </html>

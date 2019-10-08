@@ -2,6 +2,8 @@
     Document   : Admin_add_faculty_subject_specific
     Created on : 3 Oct, 2019, 11:29:03 PM
     Author     : rutu
+    Further details like Academic Year, Subject, Faculty are selected from this page
+    All the details are sent to 'Admin_add_faculty_subject_specific_add.jsp'
 --%>
 <jsp:include page="header.jsp" >
 <jsp:param name="discription" value="Shivajinagar, Pune 5." />
@@ -17,7 +19,7 @@
         
     </head>
     <body  class="body">
-        <div class="form-style">  
+        <div class="form-style" align="center">  
         <h2 align="center">Add Faculty Subject</h2>
         <form method="GET" action="Admin_add_faculty_subject_specific_add.jsp">
             
@@ -49,8 +51,10 @@
                                     
             %>
             
-            <td><label>Academic Year: </label></td>
-            <td><select name="academic_year" >
+            <td width="125">Academic Year:<span class="required">*</span></td>
+            <td width="180"><div class="input-group">
+                    <select name="academic_year" required="">
+                        <option value="">--Academic Year--</option>
             <% 
             
             while(rs.next())
@@ -62,18 +66,14 @@
             }
             rs.close();
             stmt.close();
-            
-   
-            %>
-            </select>
-            </td>
-            <%
             }
             catch(Exception e)
             {
                 System.out.print(e);
             }
             %>
+                    </select></div>
+            </td>
             </tr>
             
                 <%
@@ -122,26 +122,24 @@
                         %>
                         
                         <tr>
-                            <td>Course Name:</td>
+                            <td width="125">Course Name:</td>
                             <% 
                             while(rs1.next())
                             {
                             %>
-                            <td><label><%=rs1.getString(1)%></label></td>
+                            <td width="180"><%=rs1.getString(1)%></td>
                             <% 
                             }
                             rs1.close();
                             stmt1.close();
                             %>
-                            
                         </tr>
-                        
-                        
-                        
                         <tr>
                             
-                            <td><label>Subject: </label></td>
-                            <td><select name="subject_code" >
+                            <td width="125">Subject:<span class="required">*</span></td>
+                            <td width="180"><div class="input-group">
+                                    <select name="subject_code" required>
+                                        <option value="">--Subject--</option>
                             <% 
                             while(rs.next())
                             {
@@ -151,21 +149,18 @@
                             }
                             rs.close();
                             stmt.close();
-                            %>
-                                </select>
-                            </td>
-                        
-                        <%
                             }
                             catch(Exception e)
                             {
                                 System.out.print(e);
                             }
                         %>
+                                    </select></div>
+                            </td>
                         </tr>
                         
                         <tr>
-                            <td ><label>Faculty : </label></td>
+                            <td width="125">Faculty:<span class="required">*</span></td>
                         <%
                             try
                             {
@@ -176,7 +171,9 @@
 
                             %>
                             
-                            <td ><select name="faculty_id" >
+                            <td width="180"><div class="input-group">
+                                    <select name="faculty_id" required>
+                                        <option value="">--Faculty--</option>
                             <% 
                             while(rs.next())
                             {
@@ -187,31 +184,27 @@
                             }
                             rs.close();
                             stmt.close();
-                            %>
-                            </select>
-                            </td>
-                            <%
                             }
                             catch(Exception e)
                             {
                                 System.out.print(e);
                             }
                             %>
+                                    </select></div>
+                            </td>
                             </tr>
-
-
-                        
-                        
                         <tr>
-                            <td width="125"><a href="Admin_add_faculty_subject.jsp" class="btn">Back</a></td>
-                            <td width="125"><button type="submit" class="btn">Add Pair</button></td>
-                            <td width="125"><button type="submit" class="btn" formaction="Admin_show_faculty_subject.jsp">Show Pairs</button></td>
+                            <td></td>
+                            <td width="125"><a href="Admin_add_faculty_subject.jsp" class="btn">Back</a>
+                            <button type="submit" class="btn">Add Pair</button>
+                            <button type="submit" class="btn" formaction="Admin_show_faculty_subject.jsp">Show Pairs</button></td>
                         </tr>
                         
             </table>
                        <input type="hidden" name="course_code" value="<%=course_code%>">
         </form>
         </div>
+        <%@include file="parts/footer.jsp" %>
     </body>
     
 </html>

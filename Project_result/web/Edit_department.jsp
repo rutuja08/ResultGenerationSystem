@@ -2,8 +2,12 @@
     Document   : Edit_department
     Created on : 16 Sep, 2019, 2:12:14 PM
     Author     : rutu
+    This is for editing department
+    Spelling can be changed using this page
 --%>
-
+<jsp:include page="header.jsp" >
+<jsp:param name="discription" value="Shivajinagar, Pune 5." />
+</jsp:include>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -16,22 +20,14 @@
 
     </head>
     <body>
-        <h1 >Edit Department</h1>
-<div>
-<h3><%
-out.print("Hello, "+session.getAttribute("admin_name"));
-
-%></h3>
-    <div>
+        <div class="form-style" align="center">
+<h2><%out.print("Hello, "+session.getAttribute("admin_name"));%></h2>
     <form method="post">
     
         
     </form>
-    <a href="admin_department_home.jsp">BACK</a> 
-	</div>
+    <a href="Departments.jsp" class="btn">BACK</a> 
 </div>
-<jsp:include page="parts/footer.jsp"></jsp:include>
-
-        
+<jsp:include page="parts/footer.jsp"></jsp:include> 
     </body>
 </html>
