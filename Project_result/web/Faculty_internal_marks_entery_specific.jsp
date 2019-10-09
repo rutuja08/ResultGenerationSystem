@@ -108,7 +108,7 @@
                     <td><input type="text" name="attempt_no" value="1"></td>
                 </tr>
                 <tr><td><label>Enter Marks: </label></td>
-                    <td><label>Maximim Marks:<%=ass_max_mks%></label><input type="text" name="marks"></td>
+                    <td><label>Maximum Marks:<%=ass_max_mks%></label><input type="text" name="marks"></td>
                 </tr>
                 
                 <tr>

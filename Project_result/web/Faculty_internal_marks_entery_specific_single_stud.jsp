@@ -103,8 +103,15 @@
                     <input type="hidden" name="subject_name" value="<%=subject_name%>">
                     <input type="hidden" name="subject_code" value="<%=subject_code%>">
                     <input type="hidden" name="shift" value="<%=shift%>">
+                    <input type="hidden" name="ass_no" value="<%=ass_no%>">
+                    <input type="hidden" name="ass_name" value="<%=ass_name%>">
+                    <input type="hidden" name="ass_max_mks" value="<%=ass_max_mks%>">
+                    
                 
-                       <a href="Faculty_internal_marks_entery.jsp?ass_name=<%=ass_name%>&course_code=<%=course_code%>&present_year=<%=present_year%>&subject_type=<%=subject_type%>&course_name=<%=course_name%>&faculty_id=<%=faculty_id%>&subject_name=<%=subject_name%>&subject_code=<%=subject_code%>&shift=<%=shift%>" class="btn">Back</a>
+                       <a href="Faculty_internal_marks_entery.jsp?ass_name=<%=ass_name%>&course_code=<%=course_code%>&present_year=<%=present_year
+                          %>&subject_type=<%=subject_type%>&course_name=<%=course_name%>&faculty_id=<%=faculty_id
+                          %>&subject_name=<%=subject_name%>&subject_code=<%=subject_code%>&shift=<%=shift
+                          %>&ass_no=<%=ass_no%>&ass_name=<%=ass_name%>&ass_max_mks=<%=ass_max_mks%>" class="btn">Back</a>
         </form>
         </div>
                     <div class="footer">

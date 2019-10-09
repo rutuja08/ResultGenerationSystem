@@ -4,6 +4,10 @@
     Author     : rutu
 --%>
 
+<jsp:include page="header.jsp" >
+<jsp:param name="discription" value="Shivajinagar, Pune 5." />
+</jsp:include>
+<%@include file="Connection.jsp" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -11,67 +15,65 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Internal Reports</title>
 <jsp:include page="parts/meta.jsp"></jsp:include>
-<%@include file="Connection.jsp" %>
+
     </head>
-    <body>
-        <h1>Internal Assessment's Report</h1>
-        <!--select year fy/sy/ty
-            select sem 1/2
-            radio 
-                -single subject
-                   --select subject particularly
-                -all subjects
-                
-            -->
+    <body class="body">
+        <div class="form-style">  
+            <h2 align="center">Internal Report</h2>
+        <%
+            int course_code = (int)session.getAttribute("course_code");
+            %>
         <form>
-        <div >	
-		<span><i  aria-hidden="true"></i></span>
-                Academic Year: <select name="academic_year" class="select">
-                    <option value=f >FY/FE</option>
-                    <option value=s >SY/SE</option>
-                    <option value=t >TY/TE</option>
-                    <option value=b >BE</option>
-                    </select>
-	</div>    
-        <div >	
-		<span><i  aria-hidden="true"></i></span>
-                Term: <select name="shift" class="select">
+            <table width="400" align="center">
+                <%
+                                          
+                    try
+                    {
+                    Class.forName(Connect.DRIVER);
+                    Connection con = DriverManager.getConnection(Connect.URLR, Connect.USER, Connect.PASS);
+                    Statement stmt = con.createStatement();
+                    ResultSet rs= stmt.executeQuery("SELECT  `course_name` FROM `Course` WHERE `course_code`="+course_code);
+
+                    %>
+                    <tr>
+                        <td><label>Course: </label></td> 
+                        <% 
+                        while(rs.next())
+                        {
+                        %>
+                        <td><label><%=rs.getString(1)%></label></td>
+                        <% 
+                        }
+                        %>
+                    </tr>
+
+                    <%
+                        }
+                        catch(Exception e)
+                        {
+                            System.out.print(e);
+                        }
+                    %>
+
+                <tr><td><label>Academic Year: </label></td>
+                    <td><select name="academic_year" class="select">
+                    <option value=FY/FE >FY/FE</option>
+                    <option value=SY/SE >SY/SE</option>
+                    <option value=TY/TE >TY/TE</option>
+                    <option value=BE >BE</option>
+                        </select></td>
+	
+                <tr>
+                    <td><label>Term: </label></td>
+                    <td><select name="shift" class="select">
                     <option value=1>1</option>
                     <option value=2>2</option>
-                    </select>
-	</div>
-	<div >	
-		<span><i  aria-hidden="true"></i></span>
+                    </select></td>
+                </tr>
+                
+	
                 Select Assessment For: <input type="radio"  name="one"  value="one"  /> Single Subject
-                			<%
-                                            
-                                          
-                                        try
-                                        {
-                                        Class.forName(Connect.DRIVER);
-                                        Connection con = DriverManager.getConnection(Connect.URLR, Connect.USER, Connect.PASS);
-                                        Statement stmt = con.createStatement();
-                                        ResultSet rs= stmt.executeQuery("SELECT * FROM `Course`");
-                                        
-                                        %>
-                                        Course: <select name="course_code" class="select">
-                                            <% 
-                                            while(rs.next())
-                                            {
-                                            %>
-                                            <option value="<%=rs.getInt(1)%>"><%=rs.getString(2)%></option>
-                                            <% 
-                                            }
-                                            %>
-                                        </select>
-                                        <%
-                                            }
-                                            catch(Exception e)
-                                            {
-                                                System.out.print(e);
-                                            }
-                                        %>
-					<div class="clear"></div>
+                			<div class="clear"></div>
 				
                 <input type="radio"  name="all"  value="all"  /> All Subject
                 

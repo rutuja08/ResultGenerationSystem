@@ -72,7 +72,9 @@ else
     <a href="Login_page.jsp" class="btn">Back</a>
     <%  
 }  
-%>  
-</center>
+    %>  </div>
+    <div class="footer">
 <%@include file="parts/footer.jsp" %>
+    </div>
     </body>
+        </html>

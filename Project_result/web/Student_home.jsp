@@ -19,7 +19,7 @@
             <tr>
                 <td width="125"></td>
                 <td>
-                    <input type="submit" formaction="stud_internal_report.jsp" class="btn" value="INTERNAL REPORT">
+                    <input type="submit" formaction="stud_select_sub_type.jsp" class="btn" value="INTERNAL REPORT">
                 </td>
             </tr>
             <tr>
