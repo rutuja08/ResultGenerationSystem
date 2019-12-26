@@ -72,10 +72,10 @@ function hideURLbar(){ window.scrollTo(0,1); }
                             {
                                 Class.forName(Connect.DRIVER);
                                 Connection con = DriverManager.getConnection(Connect.URLR, Connect.USER, Connect.PASS);
-                                out.println("<option>Connection successful</option>");
+                                //out.println("<option>Connection successful</option>");
                                 Statement stmt = con.createStatement();
                                 ResultSet rs= stmt.executeQuery("SELECT * FROM `Prefix`");
-                                out.println(rs);
+                               // out.println(rs);
                                 while(rs.next())
                                 {
                                     
@@ -107,8 +107,8 @@ function hideURLbar(){ window.scrollTo(0,1); }
                     <td width="180"><div class="input-group"><input type="text" name="last_name" placeholder="Last Name" required="required" /></div></td>
                 </tr>
 		<tr>
-                    <td width="125"><label>Password:<span class="required">*</span></label></td>
-                    <td width="180"><div class="input-group"><input type="password" name="password" placeholder="password" required="required"/></div></td>
+                    <td width="125">Password:<span class="required">*</span></td>
+                    <td width="180"><div class="input-group"><input type="password" name="password" placeholder="Password" required="required"/></div></td>
 		</tr>
                 <tr>
                     <td width="125">Confirm Password:<span class="required">*</span></td>
@@ -186,7 +186,7 @@ function hideURLbar(){ window.scrollTo(0,1); }
                 <tr>
                     <td></td>
                     <td><a href="Admin_login.jsp" class="btn">Back</a>
-                        <input type="submit" value="Submit" onclick="validate()" class="btn"/>
+                        <input type="submit" value="Submit" onclick="return validate()" class="btn"/>
                         <input type="reset" value="Reset" class="btn">
                     </td>
                 </tr>

@@ -25,35 +25,7 @@
     if(session.getAttribute("admin_name")!=null)
     {    
     
-    Connection con_r;
-    PreparedStatement ps;
-    String new_dept= (String)request.getParameter("new_dept");
-    
-    con_r=ConnectionProvider.getCon();
-    String sql ="select * from `Course`";
-    ps = con_r.prepareStatement(sql);
-    
-    try{
-        ps.setString(1, null);
-    ps.setString(2, new_dept);
-    int row= ps.executeUpdate();
-    if(row==1)
-        out.println("success");
-        
-        
-        %>
-        <script type="text/javascript">
-            alert("Department Successfully Added");
-        </script>
-           <a href="Departmers.jsp" class="btn">Back</a> 
-        <%
     }
-    catch(Exception e)
-    {
-        //out.println(e);
-    }
-    }
-    
     else{
 %><jsp:forward page="Admin_login.jsp"></jsp:forward><%
     }
@@ -62,7 +34,7 @@
 
     <form action="Add_department_jsp.jsp" method="post">
         <div class="form-style" align="center">
-            <h2>Add Department/Course</h2>
+            <h2>Add Department Or Course</h2>
             <table width="400">
                 <tr>
                     <td width="125">Department:<span class="required">*</span></td>

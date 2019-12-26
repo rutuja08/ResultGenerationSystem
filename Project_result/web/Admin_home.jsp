@@ -23,52 +23,54 @@
 
     <form method="post">
         
-        <table width="400" align="center">
+        <table width="800" align="center">
             <tr>
-                <td width="125"></td>
+                
                 <td>
+                    <div class="dropdown">
                     <button  formaction="Departments.jsp" class="btn">DEPARTMENTS</button>
+                    <div class="dropdown-content">
+                        <a href="#">Show All</a>
+                        <a href="#">Add New</a>
+                        <a href="#">Edit Existing</a>
+                        <a href="#">Delete Existing</a>
+                    </div>
+                    </div>
                 </td>
-            </tr>
-            <tr>
-                <td width="125"></td>
+            
+                
                 <td>
                     <button formaction="Admin_faculty.jsp" class="btn">FACULTY</button>
                 </td>
             </tr>
             <tr>
-                <td width="125"></td>
+                
                 <td>
                     <button formaction="#" class="btn">EXAMINATION</button>
                 </td>
-            </tr>
-            <tr>
-                <td width="125"></td>
+            
+                
                 <td>
                     <button formaction="Admin_student.jsp" class="btn">STUDENT</button>
                 </td>
             </tr>
             <tr>
-                <td width="125"></td>
+                
                 <td>
                     <button formaction="Security_Question.jsp" class="btn">SEQURITY QUESTION</button>
                 </td>
-            </tr>
-            <tr>
-                <td width="125"></td>
+            
+                
                 <td>
                     <button formaction="#" class="btn">SUBJECT</button>
                 </td>
             </tr>
             <tr>
-                <td width="125"></td>
+                <td width="400"></td>
                 <td height="5"></td>
             </tr>
-            <tr>
-                <td width="125"></td>
-                <td><a href="Admin_login.jsp" class="btn">Back</a></td>
-            </tr>
         </table>
+        <a href="Admin_login.jsp" class="btn">Back</a>
     </form>
 </div>
     <div class="footer">

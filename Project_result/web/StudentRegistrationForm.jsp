@@ -1,3 +1,4 @@
+<%@page import="java.util.Calendar"%>
 <!--
 	Author: Rutuja Jagtap
 -->
@@ -24,7 +25,7 @@ function hideURLbar(){ window.scrollTo(0,1); }
             <table width="400">
                 <tr>
                     <td width="125">PRN:<span class="required">*</span></td>
-                    <td width="180"><div class="input-group"><input type="text" name="prn" placeholder="PRN" required="required" /></div></td>
+                    <td width="180"><div class="input-group"><input type="text" name="prn" placeholder="Prn" required="required" /></div></td>
                 </tr>
                 <tr>
                     <td width="125">First Name:<span class="required">*</span></td>
@@ -39,8 +40,8 @@ function hideURLbar(){ window.scrollTo(0,1); }
                     <td width="180"><div class="input-group"><input type="text" name="last_name" placeholder="Last Name" required="required" /></div></td>
                 </tr>
 		<tr>
-                    <td width="125"><label>Password:<span class="required">*</span></label></td>
-                    <td width="180"><div class="input-group"><input type="password" name="password" placeholder="password" required="required"/></div></td>
+                    <td width="125">Password:<span class="required">*</span></td>
+                    <td width="180"><div class="input-group"><input type="password" name="password" placeholder="Password" required="required"/></div></td>
 		</tr>
                 <tr>
                     <td width="125">Confirm Password:<span class="required">*</span></td>
@@ -62,6 +63,7 @@ function hideURLbar(){ window.scrollTo(0,1); }
                         <%
                         try
                         {
+                            
                             Class.forName(Connect.DRIVER);
                             Connection con = DriverManager.getConnection(Connect.URLR, Connect.USER, Connect.PASS);
                             Statement stmt = con.createStatement();
@@ -88,17 +90,67 @@ function hideURLbar(){ window.scrollTo(0,1); }
                     <td width="180"><div class="input-group">
                         <select name="joining_yr" required="required">
                             <option value="">--Joining Year--</option>
-                        <%
-                        for(int i=1990; i<2030; i++)
-                        {
-                            %>
-                                <option value=<%=i %>><%=i %></option>
+                        
                             <%
+                            int current_sys_year = Calendar.getInstance().get(Calendar.YEAR);
+                            for( int i = current_sys_year ; i > 1990 ; i-- )
+                            {
+                                %>
+                                    <option value=<%=i %>><%=i %></option>
+                                <%
+                            }
+                            %> 
+                        </select></div>
+                    </td>
+		</tr>
+                
+                <tr>
+                    <td width="125">Present Class:<span class="required">*</span></td>
+                    <td width="180"><div class="input-group">
+                        <select name="present_class" required="required">
+                            <option value="">--Present Class--</option>
+                        <%
+                        try
+                        {
+                            
+                            Class.forName(Connect.DRIVER);
+                            Connection con = DriverManager.getConnection(Connect.URLR, Connect.USER, Connect.PASS);
+                            Statement stmt = con.createStatement();
+                            ResultSet rs= stmt.executeQuery("SELECT * FROM `Class`");
+                            while(rs.next())
+                            {
+                            %>
+                                <option value="<%=rs.getString(1)%>"><%=rs.getString(1)%></option>
+                            <% 
+                            }
+                            rs.close();
+                            con.close();
+                        }
+                        catch(Exception e)
+                        {
+                            System.out.print(e);
                         }
                         %>
                         </select></div>
                     </td>
 		</tr>
+                <tr>
+                    <td width="125">Shift:<span class="required">*</span></td>
+                    <td width="180"><div class="input-group">
+                        <select name="shift" required="required">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                        
+                        </select></div>
+                    </td>
+		</tr>
+                
+                <tr>
+                    <td width="125">Present Roll No:<span class="required">*</span></td>
+                    <td width="180"><div class="input-group"><input type="text" name="present_roll_no" id="present_roll_no" placeholder="Present Roll No" required="required" /></div></td>
+                        
+		</tr>
+		
                 <tr>
                     <td width="125">Gender:<span class="required">*</span></td>
                     <td width="180"><input type="radio"  name="sex"  value="m"  /> MALE
@@ -139,7 +191,8 @@ function hideURLbar(){ window.scrollTo(0,1); }
                 </tr>
                 <tr>
                     <td></td>
-                    <td><a href="Admin_login.jsp" class="btn">Back</a>
+                    <td>
+                        <a href="Admin_login.jsp" class="btn">Back</a>
                         <input type="submit" value="Submit" onclick="validate()" class="btn"/>
                         <input type="reset" value="Reset" class="btn">
                     </td>

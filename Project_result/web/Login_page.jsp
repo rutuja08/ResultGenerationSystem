@@ -15,7 +15,7 @@
 </head>
 <body>
     <div class="form-style">  
-        <h2 align="center">Login Form</h2>
+        <h2 align="center">Student Login Form</h2>
         
         <form action="LoginProcess.jsp" method="POST">
 
@@ -29,7 +29,7 @@
                     <td width="180"><div class="input-group"><input type="password" name="password" placeholder="Password" required="required" /></div></td>
                 </tr>
                 <tr>
-                    <td><a href="StudentRegistrationForm.jsp" class="register">New Registration </a></td>
+                    <td><a href="StudentRegistrationForm.jsp" class="register">Student New Registration </a></td>
                     <td><a href="Welcome_page.jsp" class="btn">Back</a>
                         <button type="submit" class="btn">Login</button>
                         <button type="reset" class="btn">Reset</button>

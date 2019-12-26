@@ -35,8 +35,9 @@
         %>
         <script type="text/javascript">
             alert("Department Successfully Added");
+            setTimeout("location.href='Departments.jsp';",1);
         </script>
-        <a href="Departments.jsp" class="btn">Back</a>    
+          
         <%
     }
     }
@@ -49,9 +50,9 @@
     else{
         %>
         <script type="text/javascript">
-            alert("Cannot add amenity as wrong login");
+            alert("Cannot add Department as wrong login");
+            setTimeout("location.href='Departments.jsp';",1);
         </script>
-        <a href="Admin_login.jsp" class="btn">Back</a>    
         <%
     }
     %>

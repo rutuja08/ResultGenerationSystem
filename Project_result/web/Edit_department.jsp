@@ -22,7 +22,8 @@
     <body>
         <div class="form-style" align="center">
 <h2><%out.print("Hello, "+session.getAttribute("admin_name"));%></h2>
-    <form method="post">
+     
+        <form method="post">
     
         
     </form>

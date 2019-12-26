@@ -61,7 +61,7 @@ String sql = "select ID,prefix,first_name,last_name,course_code,user_type from "
         String admin_name = prefix+" "+first_name+" "+last_name;
         session.setAttribute("admin_name",admin_name );
         session.setAttribute("faculty_id",faculty_id );
-        session.setAttribute("faculty_course_code", course_code);
+        session.setAttribute("faculty_or_admin_course_code", course_code);
         session.setAttribute("admin_email_id",request.getParameter("email_id"));
         if(rs.next())
         {
@@ -89,17 +89,17 @@ else if(user_type.equals("faculty") && user_type_from_db.equals("f"))
 out.print(user_type);
 response.sendRedirect("Faculty_home.jsp");
 }
-else  
-{  
- %>
- <script type="text/javascript">
-                alert("Sorry, email, password or restricted access error");
-            </script>
-    <a href="Admin_login.jsp" class="btn">Back</a>
- 
- <%
-}
+
 }  
+else
+{
+    %>
+    <script type="text/javascript">
+            alert("Wrong Email Or Password");
+            setTimeout("location.href='Admin_login.jsp';",0);
+        </script>
+    <%
+}
 %>  
 <%@include file="parts/footer.jsp" %>
         </div>

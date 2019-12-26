@@ -17,12 +17,14 @@
     </head>
     <body>
         <%
-            String first_name, middle_name,present_class, last_name, prn, email_id, sex, contact, answer, division,joining_yr;
+            String first_name, middle_name,present_class, last_name, prn, 
+                    email_id, sex, contact, answer, division,joining_yr,present_roll_no;
             int course_code,secquest_no,shift;
             
             joining_yr= request.getParameter("joining_yr");
             first_name = request.getParameter("first_name");
             present_class = request.getParameter("present_class");
+            present_roll_no = request.getParameter("present_roll_no");
             middle_name = request.getParameter("middle_name");
             last_name = request.getParameter("last_name");
             sex = request.getParameter("sex");
@@ -94,7 +96,6 @@
                  }
                   %>
     </body>
-    </center>
 <%@include file="parts/footer.jsp" %>
-    </body>
+    
 </html>
