@@ -3,7 +3,7 @@
     Created on : 3 Oct, 2019, 11:06:24 PM
     Author     : rutu
 --%>
-<jsp:include page="header.jsp" >
+<jsp:include page="parts/firstheader.jsp" >
 <jsp:param name="discription" value="Shivajinagar, Pune 5." />
 </jsp:include>
 

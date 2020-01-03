@@ -2,12 +2,15 @@
 .form-style{/*for styling a form*/
     /*this name is called inside html file using class="form-style"*/
     font-family: 'Open Sans Condensed', arial, sans;
-    width: 1200px;
+    width: 1000px;
+    height: 450px;
     padding: 30px;
     backgound: lightblue;
-    margin: 50px auto;
+    margin: 50px 200px auto;
     color: black;
     box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.22);
+    
+    position: static;
 }
 .form-style h2{/* this name is called inside html using <h2> */
     background: crimson;
@@ -18,6 +21,22 @@
     padding: 20px;
     margin: -30px -30px 30px -30px;
 }
+
+.sidenav
+{
+    width: 150px;
+    height: 500px;
+    padding: 19px;
+    font-size: 16px;
+    background-color: lightcoral;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.22);
+    overflow: auto;
+    display: block;
+    position: fixed;
+    margin: 50px auto;
+}
+
+
 .input-group{
     margin: 10px 0px 10px 0px;
 }
@@ -45,11 +64,44 @@
     font-family: 'Open Sans Condensed', arial, sans;
     padding: 10px;
     font-size: 15px;
-    color: #FFFFFF;
+    color: white;
     background: crimson;
     border-radius: 5px;
     border: none;
-    width: 80%;
+    
+}
+
+.btn_menu{ 
+     background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 16px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: auto;
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+  cursor: pointer;
+}
+.btn_menu1 {
+  background-color: white; 
+  color: black; 
+  border: 2px solid #f44336;
+}
+
+.btn_menu1:hover {
+  background-color: #f44336;
+  color: white;
+}
+
+.back_btn
+{
+    position: relative;
+    bottom: 90px;
+    left: 250px;
+    cursor: pointer;
 }
 .edit{
     padding: 5px;
@@ -69,47 +121,13 @@
 #dept_select
 {
     width: 400px;
+   
+}
+.dept_select:hover
+{
+    background-color: whitesmoke;
 }
 
-
-.sidenav {
-    height: 100%;
-    width: 0;
-    position: fixed;
-    z-index: 1;
-    top: 0;
-    left: 0;
-    background-color: #111;
-    overflow-x: hidden;
-    transition: 0.5s;
-    padding-top: 60px;
-}
-
-.sidenav a {
-    padding: 8px 8px 8px 32px;
-    text-decoration: none;
-    font-size: 25px;
-    color: #818181;
-    display: block;
-    transition: 0.3s;
-}
-
-.sidenav a:hover {
-    color: #f1f1f1;
-}
-
-.sidenav .closebtn {
-    position: absolute;
-    top: 0;
-    right: 25px;
-    font-size: 36px;
-    margin-left: 50px;
-}
-
-@media screen and (max-height: 450px) {
-    .sidenav {padding-top: 15px;}
-    .sidenav a {font-size: 18px;}
-}
 
 
 /*drop_down list and menu*/
@@ -149,3 +167,76 @@
 .dropdown:hover .dropdown-content {display: block;}
 
 .dropdown:hover .dropbtn {background-color: #3e8e41;}
+
+
+.footer
+{
+    position:static;
+    left: 0;
+    bottom: 0;
+    font-family: 'Open Sans Condensed', arial, sans;
+    width: 100%;
+    height: 10%;
+    padding: 30px;
+    background: crimson;
+    color: white;
+    
+}
+
+
+
+
+
+/* Style the tab */
+.tab {
+  overflow: hidden;
+  border: 1px solid #ccc;
+  background-color: #f1f1f1;
+}
+
+/* Style the buttons inside the tab */
+.tab button {
+  background-color: inherit;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  transition: 0.3s;
+  font-size: 17px;
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+  background-color: #ddd;
+}
+
+/* Create an active/current tablink class */
+.tab button.active {
+  background-color: #ccc;
+}
+
+/* Style the tab content */
+.tabcontent {
+  width: 900px;
+  height: 850px;
+  padding: 50px auto;
+  display: none;
+  
+}
+
+.logout
+{
+    right: 120px;
+    top: 75px;
+    font-size: 21px;
+    background-color: crimson;
+    color: white;
+    position: absolute;
+}
+
+.dept_select
+{
+    width: 1000px; 
+    height: 100px;;
+}

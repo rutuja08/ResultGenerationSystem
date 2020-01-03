@@ -5,8 +5,8 @@
     User type 'Admin' only can access this page.
     This is used for adding new department into 'Course' table.
 --%>
-<jsp:include page="header.jsp" >
-<jsp:param name="discription" value="Shivajinagar, Pune 5." />
+<jsp:include page="parts/firstheader.jsp" >
+    <jsp:param name="discription" value="Shivajinagar, Pune 5." />
 </jsp:include>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -15,45 +15,57 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
 
-<%@page import="java.sql.*" %>
-<%@page import="bean.*" %>
-      
+        <%@page import="java.sql.*" %>
+        <%@page import="bean.*" %>
+
+
+        <script>
+            function goBack() {
+                window.history.back();
+            }
+        </script>
     </head>
     <body>
 
-<%  
-    if(session.getAttribute("admin_name")!=null)
-    {    
-    
-    }
-    else{
-%><jsp:forward page="Admin_login.jsp"></jsp:forward><%
-    }
-    %>
+        <%
+            if (session.getAttribute("admin_name") != null) {
+
+            } else {
+        %><jsp:forward page="Admin_login.jsp"></jsp:forward><%
+            }
+        %>
 
 
-    <form action="Add_department_jsp.jsp" method="post">
-        <div class="form-style" align="center">
-            <h2>Add Department Or Course</h2>
-            <table width="400">
-                <tr>
-                    <td width="125">Department:<span class="required">*</span></td>
-                    <td width="180"><div class="input-group"><input type="text" name="new_dept" id="new_dept" placeholder="Department" required></div></td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td>
-                        <a href="Departments.jsp" class="btn">Back</a>
-                        <input type="submit" value="Submit" class="btn">
-                        <input type="reset" value="Reset" class="btn">
-                    </td>
-                </tr>            
-            </table>
-        
-    </form>
+        <form action="Add_department_jsp.jsp" method="post">
+            <div class="form-style" align="center">
+                <h2>Add Department Or Course</h2>
+                <div class="logout">
+                    <a href="Logout.jsp" class="logout">LOGOUT</a>
+                </div>
+                <table width="400">
+                    <tr>
+                        <td>Department:<span class="required">*</span></td>
+                        <td ><div class="input-group"><input type="text" name="new_dept" id="new_dept" placeholder="Department" required></div></td>
+                    </tr>
+                    <tr>
+                        <td>
+
+                            <input type="submit" value="Submit" class="btn_menu btn_menu1">
+                        </td>
+                        <td align="center">
+                            <input type="reset" value="Reset" class="btn_menu btn_menu1">
+                        </td>
+                    </tr>            
+                </table>
+
+        </form>
+    </div>
+
+    <div class="back_btn">
+        <a  class="btn" onclick="goBack()">Back</a>
     </div>
     <div class="footer">
-    <%@include file="parts/footer.jsp" %>
+        <%@include file="parts/footer.jsp" %>
     </div>
-    </body>
+</body>
 </html>

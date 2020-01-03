@@ -4,7 +4,7 @@
     Author     : rutu
     New department is added into database using this table
 --%>
-<jsp:include page="header.jsp" >
+<jsp:include page="parts/firstheader.jsp" >
 <jsp:param name="discription" value="Shivajinagar, Pune 5." />
 </jsp:include>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>

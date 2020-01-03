@@ -5,9 +5,14 @@
 -->
 <!-- Meta tag Keywords -->
 <html>
-	<img class="mcoelogo" src="images/mcoelogo.png"  
-             alt="Modern College of Engineering" style="display: block;	margin-left: auto;	
-             margin-right: auto; padding: auto; color: skyblue;"	 height="30" width="30"/>
-	<h1>Modern College of Engineering, Pune</h1>
-        
+    
+        <link rel="stylesheet" href="css/Homepage.css" type="text/css">
+        <div class="head1">
+            <img src="images/mcoelogo_1.png" />
+            <p>PROGRESSIVE EDUCATION SOCIETY'S</p>
+            <h1>MODERN COLLEGE OF ENGINEERING</h1>
+            <p>Approved by AICTE New Delhi, Recognized by Govt. of Maharashtra,</p>
+            <p>Affiliated to Savitribai Phule Pune University</p>
+            <p> Accredited by NAAC with <b>A Grade,</b> Awarded <b>Best College</b> by Savitribai Phule Pune University.
+        </div>
 </html>
