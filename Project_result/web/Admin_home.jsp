@@ -117,24 +117,24 @@
                 <table style="height: 200px; width: 1000px;" align="center" >
                     <tr>
                         <td>
-                            <button id="dept"  formaction="Departments.jsp" class="btn_menu btn_menu1">DEPARTMENTS</button>
+                            <button id="dept"  formaction="Departments.jsp" class="btn_menu btn_menu1"> DEPARTMENTS </button>
                         </td>
                         <td>
-                            <button id="facuty" formaction="Admin_faculty.jsp" class="btn_menu btn_menu1">FACULTY</button>
+                            <button id="facuty" formaction="Admin_faculty.jsp" class="btn_menu btn_menu1">   FACULTY   </button>
                         </td>
                         <td>
-                            <button id="examination" formaction="#" class="btn_menu btn_menu1">EXAMINATION</button>
+                            <button id="examination" formaction="#" class="btn_menu btn_menu1"> EXAMINATION </button>
                         </td>
                     </tr>
                     <tr>
                         <td>
-                            <button id="stud" formaction="Admin_student.jsp" class="btn_menu btn_menu1">STUDENT</button>
+                            <button id="stud" formaction="Admin_student.jsp" class="btn_menu btn_menu1">   STUDENT   </button>
                         </td>
                         <td>
                             <button id="security" formaction="Security_Question.jsp" class="btn_menu btn_menu1">SECURITY QUESTION</button>
                         </td>
                         <td>
-                            <button id="subject" formaction="#" class="btn_menu btn_menu1">SUBJECT</button>
+                            <button id="subject" formaction="#" class="btn_menu btn_menu1">   SUBJECT   </button>
                         </td>
                     </tr>
                 </table>

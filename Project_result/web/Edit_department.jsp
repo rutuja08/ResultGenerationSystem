@@ -18,16 +18,12 @@
         <%@page import="bean.*" %>
         <jsp:include page="parts/meta.jsp"></jsp:include>
 
-        <script>
-            function goBack() {
-                window.history.back();
-            }
-            
-            function edit_dept()
-            {
-                
-            }
-        </script>
+            <script>
+                function goBack() {
+                    window.history.back();
+                }
+
+            </script>
         </head>
         <body>
             <div class="form-style" >
@@ -37,17 +33,33 @@
                 </div>
 
 
-                <form method="post">
+                <form method="get" action="Edit_department_jsp.jsp" >
 
                 <%
-                    String course_name = request.getParameter("course");
+                    String course_name =null;
+                    course_name = request.getParameter("course");
+                    try
+                    {
+                    if (course_name.isEmpty()) {
+                %>
+                <script type="text/javascript">
+                    alert("Department Name Not Selected");
+                    setTimeout("location.href='Department.jsp';", 1);
+                </script>
+
+                <%
+                    }}
+catch(Exception e)
+{
+
+}
                 %>
                 <table width="400" align="center">
                     <tr>
                         <td>
                             Old Department Name: 
                         </td>
-                        <td><%=course_name%></td>
+                        <td><%=course_name%><input type="hidden" name="course" value="<%=course_name%>"/> </td>
                     </tr>
                     <tr>
                         <td>New Department Name:<span class="required">*</span></td>
@@ -63,7 +75,25 @@
                         </td>
                     </tr>            
                 </table>
+<%
+                    
+                    
+                    try
+                    {
+                    if (course_name.isEmpty()) {
+                %>
+                <script type="text/javascript">
+                    alert("Department Name Not Selected");
+                    setTimeout("location.href='Department.jsp';", 1);
+                </script>
 
+                <%
+                    }}
+catch(Exception e)
+{
+
+}
+                %>
 
             </form>
 

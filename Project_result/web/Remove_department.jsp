@@ -1,13 +1,12 @@
 <%-- 
-    Document   : Edit_department_jsp
-    Created on : 3 Jan, 2020, 8:02:28 PM
+    Document   : Remove_department
+    Created on : 3 Jan, 2020, 10:30:54 PM
     Author     : rutu
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="java.sql.*" %>
 <%@page import="bean.*" %>
-
 <!DOCTYPE html>
 <html>
     <head>
@@ -45,7 +44,7 @@
             } else {
             %>
             <script type="text/javascript">
-                alert("Cannot add Department as wrong login");
+                alert("Cannot Delete Department as wrong login");
                 setTimeout("location.href='Welcome_page.jsp';", 1);
             </script>
             <%

@@ -70,7 +70,7 @@
                             </td>
                             <td width="125"></td>
                             <td>
-                                <button formaction="#" class="btn_menu btn_menu1">REMOVE DEPARTMENT</button>
+                                <button formaction="Remove_department.jsp" class="btn_menu btn_menu1">REMOVE DEPARTMENT</button>
                             </td>
                             <td width="125"></td>
                             <td height="5"></td>
