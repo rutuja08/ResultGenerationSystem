@@ -27,6 +27,7 @@
         </div>
         <div id="navbar" >
             <a href="#home">HOME</a>
+            <a href="#">PROFILE</a>
             <a href="#aboutus">ABOUT US</a>
             <a href="#contactus">CONTACT</a>
         </div>
